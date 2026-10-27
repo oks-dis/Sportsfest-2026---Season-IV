@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bowling Lineup & Mechanics - SPORTSFEST 2026 - Season IV</title>
+    
+    <!-- External CSS Libraries -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- Custom Advanced Futuristic Stylesheet -->
+    <style>
+        :root {
+            --bg-deep: #01080a;
+            --bg-card: rgba(8, 34, 38, 0.85);
+            --border-glow: rgba(0, 255, 255, 0.4);
+            --neon-teal: #00ffff;
+            --neon-volt: #ccff00;
+            --text-main: #f0f4f5;
+            --text-muted: #b0c4de;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(0, 255, 255, 0.12), transparent 45%),
+                radial-gradient(circle at 85% 85%, rgba(204, 255, 0, 0.1), transparent 45%),
+                linear-gradient(135deg, #01080a, #031b20, #062e35);
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        /* Navbar Cyber Glass */
+        .navbar-cyber {
+            background: rgba(1, 8, 10, 0.9) !important;
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar-brand {
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: var(--neon-volt) !important;
+            text-shadow: 0 0 12px rgba(204, 255, 0, 0.5);
+        }
+
+        .navbar-nav .nav-link {
+            color: var(--text-main) !important;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active {
+            color: var(--neon-teal) !important;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+        }
+
+        /* Hero Header */
+        .cyber-header {
+            padding: 80px 0 30px 0;
+            position: relative;
+        }
+
+        .cyber-title {
+            font-weight: 900;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, #fff, var(--neon-teal), var(--neon-volt));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+        }
+
+        /* Holographic High-Visibility Cards */
+        .cyber-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glow);
+            border-radius: 24px;
+            padding: 30px;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .cyber-card:hover {
+            border-color: var(--neon-volt);
+            box-shadow: 0 0 30px rgba(204, 255, 0, 0.3), inset 0 0 20px rgba(0, 255, 255, 0.15);
+        }
+
+        .cyber-card h4, .cyber-card h3 {
+            color: var(--neon-teal);
+            font-weight: 800;
+            text-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
+        }
+
+        .cyber-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .sport-icon-box {
+            width: 75px;
+            height: 75px;
+            background: rgba(0, 255, 255, 0.05);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--neon-volt);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
+        }
+
+        .cyber-badge {
+            background: rgba(0, 255, 255, 0.1);
+            color: var(--neon-teal);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Futuristic Table Styling */
+        .table-cyber {
+            color: var(--text-main);
+            background: transparent;
+            vertical-align: middle;
+        }
+
+        .table-cyber th {
+            background: rgba(0, 255, 255, 0.1);
+            color: var(--neon-volt);
+            border-color: var(--border-glow);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            padding: 15px;
+        }
+
+        .table-cyber td {
+            background: rgba(8, 34, 38, 0.4);
+            color: var(--text-muted);
+            border-color: rgba(0, 255, 255, 0.15);
+            padding: 15px;
+        }
+
+        .table-cyber tbody tr:hover td {
+            background: rgba(8, 34, 38, 0.8);
+            color: var(--text-main);
+            border-color: var(--border-glow);
+        }
+
+        /* Mechanics List Styling */
+        .cyber-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .cyber-list li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 15px;
+            color: var(--text-main);
+            font-size: 1.05rem;
+        }
+
+        .cyber-list li::before {
+            content: "\F287";
+            font-family: "bootstrap-icons";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--neon-volt);
+            font-size: 1.1rem;
+            text-shadow: 0 0 8px rgba(204, 255, 0, 0.6);
+        }
+
+        /* Futuristic Button */
+        .btn-cyber {
+            background: transparent;
+            color: var(--neon-volt);
+            border: 2px solid var(--neon-volt);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 14px 35px;
+            border-radius: 50px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: color 0.4s ease;
+            box-shadow: 0 0 15px rgba(204, 255, 0, 0.2);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-cyber::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--neon-volt);
+            z-index: -1;
+            transition: width 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .btn-cyber:hover {
+            color: #01080a;
+            box-shadow: 0 0 30px rgba(204, 255, 0, 0.7);
+        }
+
+        .btn-cyber:hover::before {
+            width: 100%;
+        }
+
+        /* Footer */
+        footer {
+            background: #000405;
+            border-top: 1px solid rgba(0, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-cyber sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">SPORTSFEST 2026 - SEASON IV</a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto gap-2">
+                    <li class="nav-item"><a class="nav-link px-3" href="index.html">HOME</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="team.html">TEAMS</a></li>
+                    <li class="nav-item"><a class="nav-link px-3 active" href="sports.html">SPORTS</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="schedule.html">SCHEDULE</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="activities.html">ACTIVITIES</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="oxord-got-talent.html">OXORD GOT TALENT</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="cyber-header text-center">
+        <div class="container">
+            <span class="cyber-badge mb-3 d-inline-block">Discipline Protocol // 05</span>
+            <h1 class="cyber-title display-4">Bowling Matrix & Rosters</h1>
+            <p class="mt-2" style="color: var(--text-muted);">Official competition rules, mechanics, player lineups, and match progression for Team AI Legends and Team NextGen Heroes.</p>
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <section class="container py-4 mb-5">
+        
+        <!-- Bowling Mechanics & Rules Section -->
+        <div class="row mb-5">
+            <div class="col-12">
+                <div class="cyber-card">
+                    <div class="d-flex align-items-center gap-3 mb-4">
+                        <div class="sport-icon-box">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+                        <div>
+                            <h3 class="mb-1">Bowling Competition Mechanics</h3>
+                            <span class="cyber-badge">Official Rules & Guidelines</span>
+                        </div>
+                    </div>
+                    <ul class="cyber-list">
+                        <li>Men (3-6 players)</li>
+                        <li>Women (3-6 players)</li>
+                        <li>Each game consists of 10 frames.</li>
+                        <li>Players must observe all safety rules of the bowling center.</li>
+                        <li>Players must handle bowling balls carefully.</li>
+                        <li>Players should avoid stepping onto the approach area when another player is preparing to bowl.</li>
+                        <li>The player with the highest total score shall be declared the winner.</li>
+                        <li>Players must wear proper sports attire.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= BOWLING MEN ================= -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="text-center mb-4">
+                    <h3 class="cyber-title fs-2">Bowling Men - Match Results Matrix</h3>
+                    <p style="color: var(--text-muted);">Date-by-date tournament breakdown</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Men Table 1: Aug 11, 2026 -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="cyber-card">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <div class="sport-icon-box" style="width: 55px; height: 55px; font-size: 1.4rem;">
+                            <i class="bi bi-calendar-event"></i>
+                        </div>
+                        <div>
+                            <h4 class="mb-0">Match Day: August 11, 2026</h4>
+                            <span class="cyber-badge">Rounds 1 - 3</span>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-cyber align-middle mb-0 text-center">
+                            <thead>
+                                <tr>
+                                    <th>Round</th>
+                                    <th>NextGen Heroes</th>
+                                    <th>Ai Legends</th>
+                                    <th>Round Winner</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>1st Round</strong></td>
+                                    <td>45</td>
+                                    <td><strong>63</strong></td>
+                                    <td><span class="badge bg-info text-dark fw-bold px-3 py-2">Ai Legends</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>2nd Round</strong></td>
+                                    <td>58</td>
+                                    <td><strong>67</strong></td>
+                                    <td><span class="badge bg-info text-dark fw-bold px-3 py-2">Ai Legends</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>3rd Round</strong></td>
+                                    <td><strong>67</strong></td>
+                                    <td>63</td>
+                                    <td><span class="badge bg-warning text-dark fw-bold px-3 py-2">NextGen Heroes</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Men Table 2: Aug 18, 2026 -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="cyber-card">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <div class="sport-icon-box" style="width: 55px; height: 55px; font-size: 1.4rem;">
+                            <i class="bi bi-calendar-event"></i>
+                        </div>
+                        <div>
+                            <h4 class="mb-0">Match Day: August 18, 2026</h4>
+                            <span class="cyber-badge">Rounds 4 - 7</span>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-cyber align-middle mb-0 text-center">
+                            <thead>
+                                <tr>
+                                    <th>Round</th>
+                                    <th>NextGen Heroes</th>
+                                    <th>Ai Legends</th>
+                                    <th>Round Winner</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>4th Round</strong></td>
+                                    <td><strong>87</strong></td>
+                                    <td>78</td>
+                                    <td><span class="badge bg-warning text-dark fw-bold px-3 py-2">NextGen Heroes</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>5th Round</strong></td>
+                                    <td>67</td>
+                                    <td><strong>77</strong></td>
+                                    <td><span class="badge bg-info text-dark fw-bold px-3 py-2">Ai Legends</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>6th Round</strong></td>
+                                    <td><strong>69</strong></td>
+                                    <td>52</td>
+                                    <td><span class="badge bg-warning text-dark fw-bold px-3 py-2">NextGen Heroes</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>7th Round</strong></td>
+                                    <td>70</td>
+                                    <td><strong>73</strong></td>
+                                    <td><span class="badge bg-info text-dark fw-bold px-3 py-2">Ai Legends</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Men Table 3: Aug 25, 2026 -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="cyber-card">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <div class="sport-icon-box" style="width: 55px; height: 55px; font-size: 1.4rem;">
+                            <i class="bi bi-calendar-event"></i>
+                        </div>
+                        <div>
+                            <h4 class="mb-0">Match Day: August 25, 2026</h4>
+                            <span class="cyber-badge">Rounds 8 - 9</span>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-cyber align-middle mb-0 text-center">
+                            <thead>
+                                <tr>
+                                    <th>Round</th>
+                                    <th>NextGen Heroes</th>
+                                    <th>Ai Legends</th>
+                                    <th>Round Winner</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>8th Round</strong></td>
+                                    <td><strong>76</strong></td>
+                                    <td>74</td>
+                                    <td><span class="badge bg-warning text-dark fw-bold px-3 py-2">NextGen Heroes</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>9th Round</strong></td>
+                                    <td><strong>97</strong></td>
+                                    <td>72</td>
+                                    <td><span class="badge bg-warning text-dark fw-bold px-3 py-2">NextGen Heroes</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Men Table 4: Sept 15, 2026 -->
+        <div class="row mb-5">
+            <div class="col-12">
+                <div class="cyber-card">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <div class="sport-icon-box" style="width: 55px; height: 55px; font-size: 1.4rem;">
+                            <i class="bi bi-calendar-event"></i>
+                        </div>
+                        <div>
+                            <h4 class="mb-0">Match Day: September 15, 2026</h4>
+                            <span class="cyber-badge">Rounds 10 - 12 & Final Standings</span>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-cyber align-middle mb-0 text-center">
+                            <thead>
+                                <tr>
+                                    <th>Round</th>
+                                    <th>NextGen Heroes</th>
+                                    <th>Ai Legends</th>
+                                    <th>Round Winner</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>10th Round</strong></td>
+                                    <td>67</td>
+                                    <td><strong>75</strong></td>
+                                    <td><span class="badge bg-info text-dark fw-bold px-3 py-2">Ai Legends</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>11th Round</strong></td>
+                                    <td><strong>72</strong></td>
+                                    <td>64</td>
+                                    <td><span class="badge bg-warning text-dark fw-bold px-3 py-2">NextGen Heroes</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>12th Round</strong></td>
+                                    <td>70</td>
+                                    <td><strong>81</strong></td>
+                                    <td><span class="badge bg-info text-dark fw-bold px-3 py-2">Ai Legends</span></td>
+                                </tr>
+                                <tr class="table-active border-top border-info">
+                                    <td><strong>TOTAL SCORES</strong></td>
+                                    <td><strong class="text-warning fs-5">845</strong></td>
+                                    <td><strong class="text-info fs-5">839</strong></td>
+                                    <td><span class="badge bg-warning text-dark fw-bold px-3 py-2">NextGen Leads (+6)</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ================= BOWLING WOMEN ================= -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="text-center mb-4">
+                    <h3 class="cyber-title fs-2">Bowling Women - Match Results Matrix</h3>
+                    <p style="color: var(--text-muted);">Date-by-date tournament breakdown</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Women Table 1: Aug 11, 2026 -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="cyber-card">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <div class="sport-icon-box" style="width: 55px; height: 55px; font-size: 1.4rem;">
+                            <i class="bi bi-calendar-event"></i>
+                        </div>
+                        <div>
+                            <h4 class="mb-0">Match Day: August 11, 2026</h4>
+                            <span class="cyber-badge">Round 1</span>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-cyber align-middle mb-0 text-center">
+                            <thead>
+                                <tr>
+                                    <th>Round</th>
+                                    <th>NextGen Heroes</th>
+                                    <th>Ai Legends</th>
+                                    <th>Round Winner</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>1st Round</strong></td>
+                                    <td>52</td>
+                                    <td><strong>64</strong></td>
+                                    <td><span class="badge bg-info text-dark fw-bold px-3 py-2">Ai Legends</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Women Table 2: Aug 18, 2026 -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="cyber-card">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <div class="sport-icon-box" style="width: 55px; height: 55px; font-size: 1.4rem;">
+                            <i class="bi bi-calendar-event"></i>
+                        </div>
+                        <div>
+                            <h4 class="mb-0">Match Day: August 18, 2026</h4>
+                            <span class="cyber-badge">Round 2</span>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-cyber align-middle mb-0 text-center">
+                            <thead>
+                                <tr>
+                                    <th>Round</th>
+                                    <th>NextGen Heroes</th>
+                                    <th>Ai Legends</th>
+                                    <th>Round Winner</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>2nd Round</strong></td>
+                                    <td><strong>56</strong></td>
+                                    <td>55</td>
+                                    <td><span class="badge bg-warning text-dark fw-bold px-3 py-2">NextGen Heroes</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Women Table 3: Aug 25, 2026 -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="cyber-card">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <div class="sport-icon-box" style="width: 55px; height: 55px; font-size: 1.4rem;">
+                            <i class="bi bi-calendar-event"></i>
+                        </div>
+                        <div>
+                            <h4 class="mb-0">Match Day: August 25, 2026</h4>
+                            <span class="cyber-badge">Rounds 3 - 5</span>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-cyber align-middle mb-0 text-center">
+                            <thead>
+                                <tr>
+                                    <th>Round</th>
+                                    <th>NextGen Heroes</th>
+                                    <th>Ai Legends</th>
+                                    <th>Round Winner</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>3rd Round</strong></td>
+                                    <td>47</td>
+                                    <td><strong>65</strong></td>
+                                    <td><span class="badge bg-info text-dark fw-bold px-3 py-2">Ai Legends</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>4th Round</strong></td>
+                                    <td>55</td>
+                                    <td><strong>72</strong></td>
+                                    <td><span class="badge bg-info text-dark fw-bold px-3 py-2">Ai Legends</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>5th Round</strong></td>
+                                    <td><strong>71</strong></td>
+                                    <td>59</td>
+                                    <td><span class="badge bg-warning text-dark fw-bold px-3 py-2">NextGen Heroes</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Women Table 4: Sept 15, 2026 -->
+        <div class="row mb-5">
+            <div class="col-12">
+                <div class="cyber-card">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <div class="sport-icon-box" style="width: 55px; height: 55px; font-size: 1.4rem;">
+                            <i class="bi bi-calendar-event"></i>
+                        </div>
+                        <div>
+                            <h4 class="mb-0">Match Day: September 15, 2026</h4>
+                            <span class="cyber-badge">Rounds 6 - 9 & Final Standings</span>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-cyber align-middle mb-0 text-center">
+                            <thead>
+                                <tr>
+                                    <th>Round</th>
+                                    <th>NextGen Heroes</th>
+                                    <th>Ai Legends</th>
+                                    <th>Round Winner</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>6th Round</strong></td>
+                                    <td>56</td>
+                                    <td><strong>64</strong></td>
+                                    <td><span class="badge bg-info text-dark fw-bold px-3 py-2">Ai Legends</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>7th Round</strong></td>
+                                    <td>63</td>
+                                    <td><strong>77</strong></td>
+                                    <td><span class="badge bg-info text-dark fw-bold px-3 py-2">Ai Legends</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>8th Round</strong></td>
+                                    <td>66</td>
+                                    <td><strong>67</strong></td>
+                                    <td><span class="badge bg-info text-dark fw-bold px-3 py-2">Ai Legends</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>9th Round</strong></td>
+                                    <td><strong>78</strong></td>
+                                    <td>67</td>
+                                    <td><span class="badge bg-warning text-dark fw-bold px-3 py-2">NextGen Heroes</span></td>
+                                </tr>
+                                <tr class="table-active border-top border-info">
+                                    <td><strong>TOTAL SCORES</strong></td>
+                                    <td><strong class="text-warning fs-5">544</strong></td>
+                                    <td><strong class="text-info fs-5">590</strong></td>
+                                    <td><span class="badge bg-info text-dark fw-bold px-3 py-2">AI Legends Leads (+46)</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Rosters Section -->
+        <div class="row g-4">
+            
+            <!-- Team AI Legends Roster -->
+            <div class="col-lg-6">
+                <div class="cyber-card">
+                    <div class="d-flex align-items-center gap-3 mb-4">
+                        <div>
+                            <img src="TEAM-AI-LEGENDS-LOGO.png" style="width: 150px;" class="team-logo" alt="Team AI Legends Logo">
+                        </div>
+                        <div>
+                            <h3 class="mb-1" style="color: var(--neon-teal);">Team AI Legends</h3>
+                            <span class="cyber-badge">Neural Squad</span>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-cyber align-middle mb-0">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Player Name</th>
+                                    <th>Lane Position / Role</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>--</strong></td>
+                                    <td><span class="text-white">N/A</span></td>
+                                    <td>Captain</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>--</strong></td>
+                                    <td><span class="text-white">N/A</span></td>
+                                    <td>Bowler 1</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>--</strong></td>
+                                    <td><span class="text-white">N/A</span></td>
+                                    <td>Bowler 2</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>--</strong></td>
+                                    <td><span class="text-white">N/A</span></td>
+                                    <td>Bowler 3</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>--</strong></td>
+                                    <td><span class="text-white">N/A</span></td>
+                                    <td>Bowler 4</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>--</strong></td>
+                                    <td><span class="text-white">N/A</span></td>
+                                    <td>Alternate / Reserve</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team NextGen Heroes Roster -->
+            <div class="col-lg-6">
+                <div class="cyber-card">
+                    <div class="d-flex align-items-center gap-3 mb-4">
+                        <div>
+                            <img src="TEAM-NEXTGEN-HEROES-LOGO.png" style="width: 150px;" class="team-logo" alt="Team NextGen Heroes Logo">
+                        </div>
+                        <div>
+                            <h3 class="mb-1" style="color: var(--neon-volt);">Team NextGen Heroes</h3>
+                            <span class="cyber-badge">Quantum Squad</span>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-cyber align-middle mb-0">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Player Name</th>
+                                    <th>Lane Position / Role</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>--</strong></td>
+                                    <td><span class="text-white">N/A</span></td>
+                                    <td>Captain</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>--</strong></td>
+                                    <td><span class="text-white">N/A</span></td>
+                                    <td>Bowler 1</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>--</strong></td>
+                                    <td><span class="text-white">N/A</span></td>
+                                    <td>Bowler 2</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>--</strong></td>
+                                    <td><span class="text-white">N/A</span></td>
+                                    <td>Bowler 3</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>--</strong></td>
+                                    <td><span class="text-white">N/A</span></td>
+                                    <td>Bowler 4</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>--</strong></td>
+                                    <td><span class="text-white">N/A</span></td>
+                                    <td>Alternate / Reserve</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="text-center mt-5">
+            <a href="sports.html" class="btn btn-cyber">
+                <i class="bi bi-arrow-left me-2"></i>Return to Sports Matrix
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4 text-center">
+        <p class="mb-1 text-white fw-bold tracking-wide">SPORTSFEST 2026 - SEASON IV</p>
+        <p class="small mb-0" style="color: var(--text-muted);">Play with Passion • Innovate with Technology • Win with Integrity</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // 1. I-disable ang Right-Click Context Menu
+      document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+      });
+
+      // 2. I-disable ang Inspect Element Shortcuts at View Source
+      document.addEventListener('keydown', function(e) {
+        // I-disable ang F12
+        if (e.key === "F12") {
+          e.preventDefault();
+        }
+        // I-disable ang Ctrl+Shift+I (Inspect)
+        if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+          e.preventDefault();
+        }
+        // I-disable ang Ctrl+Shift+J (Console)
+        if (e.ctrlKey && e.shiftKey && e.key === 'J') {
+          e.preventDefault();
+        }
+        // I-disable ang Ctrl+U (View Source)
+        if (e.ctrlKey && e.key === 'u') {
+          e.preventDefault();
+        }
+      });
+    </script>
+</body>
+</html>

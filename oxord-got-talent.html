@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OXORD Got Talent - SPORTSFEST 2026 - Season IV</title>
+    
+    <!-- External CSS Libraries -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- Custom Advanced Futuristic Stylesheet -->
+    <style>
+        :root {
+            --bg-deep: #01080a;
+            --bg-card: rgba(8, 34, 38, 0.85);
+            --border-glow: rgba(0, 255, 255, 0.4);
+            --neon-teal: #00ffff;
+            --neon-volt: #ccff00;
+            --text-main: #f0f4f5;
+            --text-muted: #b0c4de;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(0, 255, 255, 0.12), transparent 45%),
+                radial-gradient(circle at 85% 85%, rgba(204, 255, 0, 0.1), transparent 45%),
+                linear-gradient(135deg, #01080a, #031b20, #062e35);
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        /* Navbar Cyber Glass */
+        .navbar-cyber {
+            background: rgba(1, 8, 10, 0.9) !important;
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar-brand {
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: var(--neon-volt) !important;
+            text-shadow: 0 0 12px rgba(204, 255, 0, 0.5);
+        }
+
+        .navbar-nav .nav-link {
+            color: var(--text-main) !important;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active {
+            color: var(--neon-teal) !important;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+        }
+
+        /* Hero Header */
+        .cyber-header {
+            padding: 80px 0 30px 0;
+            position: relative;
+        }
+
+        .cyber-title {
+            font-weight: 900;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, #fff, var(--neon-teal), var(--neon-volt));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+        }
+
+        /* Holographic High-Visibility Cards */
+        .cyber-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glow);
+            border-radius: 24px;
+            padding: 30px;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .cyber-card:hover {
+            border-color: var(--neon-volt);
+            box-shadow: 0 0 30px rgba(204, 255, 0, 0.3), inset 0 0 20px rgba(0, 255, 255, 0.15);
+        }
+
+        .cyber-badge {
+            background: rgba(0, 255, 255, 0.1);
+            color: var(--neon-teal);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Futuristic Table Styling */
+        .table-cyber {
+            color: var(--text-main);
+            background: transparent;
+            vertical-align: middle;
+        }
+
+        .table-cyber th {
+            background: rgba(0, 255, 255, 0.1);
+            color: var(--neon-volt);
+            border-color: var(--border-glow);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            padding: 15px;
+        }
+
+        .table-cyber td {
+            background: rgba(8, 34, 38, 0.4);
+            color: var(--text-muted);
+            border-color: rgba(0, 255, 255, 0.15);
+            padding: 15px;
+        }
+
+        .table-cyber tbody tr:hover td {
+            background: rgba(8, 34, 38, 0.8);
+            color: var(--text-main);
+            border-color: var(--border-glow);
+        }
+
+        /* Futuristic Button & Action Elements */
+        .btn-cyber {
+            background: transparent;
+            color: var(--neon-volt);
+            border: 2px solid var(--neon-volt);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 14px 35px;
+            border-radius: 50px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: color 0.4s ease;
+            box-shadow: 0 0 15px rgba(204, 255, 0, 0.2);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-cyber::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--neon-volt);
+            z-index: -1;
+            transition: width 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .btn-cyber:hover {
+            color: #01080a;
+            box-shadow: 0 0 30px rgba(204, 255, 0, 0.7);
+        }
+
+        .btn-cyber:hover::before {
+            width: 100%;
+        }
+
+        .btn-view-criteria {
+            background: rgba(0, 255, 255, 0.1);
+            color: var(--neon-teal);
+            border: 1px solid rgba(0, 255, 255, 0.4);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+        }
+
+        .btn-view-criteria:hover {
+            background: var(--neon-teal);
+            color: #01080a;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+        }
+
+        /* Modal Customization */
+        .modal-content {
+            background: var(--bg-deep);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            color: var(--text-main);
+            box-shadow: 0 0 40px rgba(0, 255, 255, 0.2);
+        }
+
+        .modal-header {
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+        }
+
+        .modal-footer {
+            border-top: 1px solid rgba(0, 255, 255, 0.2);
+        }
+
+        .btn-close {
+            filter: invert(1) grayscale(100%) brightness(200%);
+        }
+
+        /* Clean List Formatting Inside Modals */
+        .modal-body ul {
+            padding-left: 1.2rem;
+            margin-bottom: 0;
+        }
+
+        .modal-body li {
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+        }
+
+        /* Organized Table for Criteria Percentages */
+        .criteria-table {
+            color: var(--text-main);
+            background: rgba(8, 34, 38, 0.5);
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+
+        .criteria-table th {
+            background: rgba(204, 255, 0, 0.1);
+            color: var(--neon-volt);
+            border-color: rgba(204, 255, 0, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.75rem;
+            padding: 10px 12px;
+        }
+
+        .criteria-table td {
+            background: transparent;
+            color: var(--text-main);
+            border-color: rgba(0, 255, 255, 0.1);
+            padding: 10px 12px;
+            vertical-align: middle;
+        }
+
+        /* Footer */
+        footer {
+            background: #000405;
+            border-top: 1px solid rgba(0, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-cyber sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">SPORTSFEST 2026 - SEASON IV</a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto gap-2">
+                    <li class="nav-item"><a class="nav-link px-3" href="index.html">HOME</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="team.html">TEAMS</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="sports.html">SPORTS</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="schedule.html">SCHEDULE</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="activities.html">ACTIVITIES</a></li>
+                    <li class="nav-item"><a class="nav-link px-3 active" href="oxord-got-talent.html">OXORD GOT TALENT</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="cyber-header text-center">
+        <div class="container">
+            <span class="cyber-badge mb-3 d-inline-block">Special Showcase Protocol</span>
+            <h1 class="cyber-title display-4">OXORD Got Talent</h1>
+            <p class="mt-2" style="color: var(--text-muted);">Master list of competitive divisions, guidelines, and evaluation matrices for Sportsfest 2026 - Season IV.</p>
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <section class="container py-4 mb-5">
+        <div class="row g-4">
+            
+            <!-- Table Card -->
+            <div class="col-12">
+                <div class="cyber-card">
+                    <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-3">
+                        <div>
+                            <h3 class="mb-1" style="color: var(--neon-teal);">Event Categories & Sub-Events</h3>
+                            <p class="mb-0">Select an item below to inspect specific event mechanics, guidelines, and criteria breakdown.</p>
+                        </div>
+                        <span class="cyber-badge">Ref: OGT-MASTER</span>
+                    </div>
+                    
+                    <div class="table-responsive">
+                        <table class="table table-cyber align-middle mb-0">
+                            <thead>
+                                <tr>
+                                    <th style="width: 100px;">No.</th>
+                                    <th>Event Title</th>
+                                    <th>Category Type</th>
+                                    <th class="text-center" style="width: 180px;">Action / Guidelines</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>OGT-01</strong></td>
+                                    <td><span class="text-white fw-bold">Hosting or Public Speaking Contest</span></td>
+                                    <td>Communication & Presentation</td>
+                                    <td class="text-center">
+                                        <button class="btn-view-criteria" data-bs-toggle="modal" data-bs-target="#criteriaModal"
+                                            data-title="Hosting or Public Speaking Contest"
+                                            data-category="Communication & Presentation"
+                                            data-mechanics='["To develop and showcase employees&apos; confidence, communication skills, and stage presence by delivering clear, organized, and engaging speeches with professionalism and confidence.", "2 Participants per team", "Speech duration: 3–5 minutes.", "Participants shall choose one (1) topic from the list provided by the committee.", "The speech must be original and delivered in English, Filipino, or a combination of both.", "Participants should introduce themselves before delivering their speech.", "The speech should have a clear introduction, body, and conclusion.", "The use of visual aids or props is optional but not required."]'
+                                            data-topics='["Participants may choose one (1) of the following topics:", "1. The Importance of Excellent Customer Service", "2. Leadership Begins with Character", "3. Teamwork: The Key to Organizational Success", "4. The Value of Integrity in the Workplace", "5. Building a Positive Work Environment", "6. The Importance of Effective Communication", "7. Innovation and Continuous Improvement", "8. Time Management for Better Productivity", "9. Professionalism in the Workplace", "10. Overcoming Challenges with a Positive Mindset", "11. The Role of Technology in Business Growth", "12. Why Customer Satisfaction Matters", "13. The Power of Goal Setting", "14. Work Ethics: Doing the Right Thing Even When No One Is Watching", "15. Becoming a Better Version of Yourself"]'
+                                            data-criteria='[{"criterion": "Delivery & Confidence", "percentage": "35%"}, {"criterion": "Clarity & Organization", "percentage": "35%"}, {"criterion": "Voice & Pronunciation", "percentage": "15%"}, {"criterion": "Overall Impression", "percentage": "15%"}]'>
+                                            <i class="bi bi-eye"></i> View Criteria
+                                        </button>
+                                    </td>
+                                </tr>
+<tr>
+                                    <td><strong>OGT-02</strong></td>
+                                    <td><span class="text-white fw-bold">Live Selling Video Contest</span></td>
+                                    <td>Digital Marketing & Sales</td>
+                                    <td class="text-center">
+                                        <button class="btn-view-criteria" data-bs-toggle="modal" data-bs-target="#criteriaModal"
+                                            data-title="Live Selling Video Contest"
+                                            data-category="Digital Marketing & Sales"
+                                            data-mechanics='["To evaluate the participants&apos; ability to confidently present 6 items with real-time promotions and best specifications, explain features and benefits, persuade customers to buy, and engage the audience like a real-time online selling broadcast—driving maximum Likes, Shares, and Comments.", "2 participants each team (co-hosts / tag-team live sellers)", "Presentation time is 10 to 20 minutes total per presentation", "The Facilitator will handle the technical live stream broadcasting setup, while each team is fully responsible for designing, decorating, and providing their own visual backgrounds (virtual background or physical set/decorations).", "Each team must provide and present 6 items equipped with real-time promotions, active availability, and best specifications.", "Participants must conduct an entertaining, high-energy simulated live broadcast (similar to Facebook Live, TikTok Live, or Shopee Live)."]'
+                                            data-participants-guidelines='["Prepare and master an engaging, entertaining live selling script.", "Kick off with high energy to hook viewers right away and encourage immediate engagement (Likes, Hearts, and Comments).", "Introduce themselves, welcome the online audience, and invite viewers to share the stream.", "Showcase all 6 provided items, highlighting their best specifications, real-time availability, and everyday benefits with an entertaining flair.", "Emphasize live promos, flash deals, exclusive discounts, or freebies tied directly to each item in real time.", "Highlight why customers need these products right now.", "Demonstrate how the products work or show them in action where applicable.", "Drive a strong Call to Action (CTA)—reminding viewers to comment &apos;MINE&apos;, share, and tap the buy button before closing.", "Design, decorate, and provide their own custom virtual background or physical set layout to enhance the live selling atmosphere (props are optional but encouraged for entertainment)."]'
+                                            data-topics='["Suggested Flow (10–20 Minutes Total):", "1. [0:00 - 2:00] The Hook, Welcome & Introduction (Energetic welcome, self-introduction, call to share and comment)", "2. [2:00 - 14:00] Real-Time 6-Item Showcase (Entertaining deep-dive presentation of all 6 items with best specs, live promos, and tag-team style)", "3. [14:00 - 17:00] Bundle Promo & Urgency Drop (Special bundle discounts, exclusive vouchers, or freebies)", "4. [17:00 - 19:00] Live Engagement Sweep (Acknowledge real-time viewer questions, shout out comments, urge fast checkouts)", "5. [19:00 - 20:00] Warm Closing (Thank the audience, remind them to keep sharing, and sign off)"]'
+                                            data-criteria='[{"criterion": "Product Knowledge & Best Specs Mastery (Accuracy and thoroughness in explaining the best specifications, real-time availability, promotions, features, and benefits of all 6 provided items)", "percentage": "30%"}, {"criterion": "Selling Technique & Audience Engagement (Persuasiveness, confidence, handling live momentum across multiple items, and driving viewer interaction like Likes, Comments, Shares, and &apos;MINE&apos; replies)", "percentage": "30%"}, {"criterion": "Communication & Delivery (Clear voice projection, confidence, language fluency, and professional live-selling charisma between co-hosts)", "percentage": "20%"}, {"criterion": "Creativity, Energy & Entertainment Value (Presentation style, entertaining live-selling vibe, custom team-designed virtual/physical background setup, use of props, and overall originality)", "percentage": "10%"}, {"criterion": "Time Management & Broadcast Flow (Smooth transitions across all 6 items, strict adherence to the 10 to 20-minute time limit, camera presence, and overall professionalism)", "percentage": "10%"}]'>
+                                            <i class="bi bi-eye"></i> View Criteria
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>OGT-03</strong></td>
+                                    <td><span class="text-white fw-bold">Unboxing Video Contest</span></td>
+                                    <td>Multimedia & Product Showcase</td>
+                                    <td class="text-center">
+                                        <button class="btn-view-criteria" data-bs-toggle="modal" data-bs-target="#criteriaModal"
+                                            data-title="Unboxing Video Contest"
+                                            data-category="Multimedia & Product Showcase"
+                                            data-mechanics='["To evaluate the participant&apos;s ability to professionally introduce and present a product through an engaging unboxing video. Participants are expected to explain the product&apos;s contents, features, specifications, and first impressions with confidence and clarity.", "3 participants each team", "Presentation time is 4–6 minutes.", "Each participant will be assigned an OXORD product by the committee.", "Participants will create a professional unboxing presentation as if reviewing a newly purchased product.", "The presentation should be clear, organized, and informative"]'
+                                            data-participants-guidelines='["Introduce themselves and the assigned product.", "Show the product packaging and discuss its appearance.", "Carefully unbox the product while explaining each step.", "Present all items included inside the package.", "Explain the product&apos;s features, specifications, functions, and accessories.", "Share their first impressions of the product, including its design, build quality, and usability.", "Highlight the product&apos;s benefits and possible uses.", "End with a short summary and recommendation.", "Participants may demonstrate the product if applicable.", "The presentation must be honest, professional, and well-organized"]'
+                                            data-topics='["Suggested Flow:", "1. Greeting and self-introduction", "2. Introduce the assigned product", "3. Show the product packaging", "4. Unbox the product carefully", "5. Present the package contents and accessories", "6. Explain the product&apos;s features, specifications, and functions", "7. Share first impressions and product benefits", "8. Give a short recommendation", "9. Closing remarks"]'
+                                            data-criteria='[{"criterion": "Product Presentation (Professional presentation of the product, packaging, contents, and overall demonstration)", "percentage": "35%"}, {"criterion": "Communication Skills (Clear voice, confidence, fluency, and professionalism while presenting)", "percentage": "25%"}, {"criterion": "Creativity (Presentation style, enthusiasm, originality, and ability to make the presentation engaging)", "percentage": "15%"}, {"criterion": "Accuracy of Information (Correct explanation of the product&apos;s features, specifications, functions, and accessories)", "percentage": "15%"}, {"criterion": "Overall Delivery (Organization, smooth flow, time management, camera presence, and overall quality of the presentation)", "percentage": "10%"}]'>
+                                            <i class="bi bi-eye"></i> View Criteria
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>OGT-04</strong></td>
+                                    <td><span class="text-white fw-bold">Customer Satisfaction Showcase</span></td>
+                                    <td>Customer Experience & Roleplay</td>
+                                    <td class="text-center">
+                                        <button class="btn-view-criteria" data-bs-toggle="modal" data-bs-target="#criteriaModal"
+                                            data-title="Customer Satisfaction Showcase"
+                                            data-category="Customer Experience & Roleplay"
+                                            data-mechanics='["To showcase the positive experiences of OXORD customers by highlighting the quality of service provided by the company. This category aims to demonstrate how excellent customer service, professionalism, and commitment to customer satisfaction build trust and long-term relationships with clients.", "Presentation duration is 5–10 minutes.", "Participants will create a video presentation featuring the customer satisfaction experience of an actual OXORD customer or a realistic customer service scenario.", "The presentation should clearly show how OXORD provided excellent service and how the customer&apos;s needs or concerns were addressed.", "Participants may use one or more of the following presentation formats: ✓Customer interview ✓Customer testimonial ✓Role-playing of a customer service experience ✓Short documentary-style video ✓Before-and-after service presentation", "The presentation should include: ✓A brief introduction of the customer or situation. ✓The customer&apos;s concern, need, or problem. ✓How OXORD staff assisted and resolved the concern. ✓The customer&apos;s feedback or satisfaction after receiving the service. ✓The value of excellent customer service and why customers choose OXORD.", "The presentation should be professional, organized, and easy to understand.", "Participants may use photos, videos, interviews, product demonstrations, or other visual materials to support their presentation.", "Note: The goal of this category is to highlight real or realistic customer experiences that demonstrate OXORD&apos;s commitment to quality service. Presentations should focus on how excellent customer care creates trust, satisfaction, and lasting relationships with customers"]'
+                                            data-presentation-guidelines='["Video Resolution: Minimum 1080p (Full HD)", "Orientation: Landscape (16:9)", "Audio must be clear and free from excessive background noise.", "Background music should not overpower the speaker.", "Simple editing, transitions, and captions are encouraged.", "Videos must not exceed the maximum time limit.", "Copyrighted music or content without permission should not be used", "Prohibited places to take photo and videos (Technical area, stock room & confidential areas in the store)", "Must wear OXORD Uniform during presentations with proper grooming"]'
+                                            data-participants-guidelines='["A brief introduction of the customer or situation.", "The customer&apos;s concern, need, or problem.", "How OXORD staff assisted and resolved the concern.", "The customer&apos;s feedback or satisfaction after receiving the service.", "The value of excellent customer service and why customers choose OXORD."]'
+                                            data-topics='["Suggested Flow:", "1. Introduction of the participant(s) and customer", "2. Introduce the customer or service experience", "3. Explain the customer&apos;s concern or need", "4. Show how OXORD provided the service", "5. Present the customer&apos;s feedback or testimonial", "6. Highlight what made the service excellent", "7. Share the impact of the service on the customer", "8. Closing message about OXORD&apos;s commitment to customer satisfaction"]'
+                                            data-disqualification='["Exceeding the maximum time by more than 30 seconds", "Plagiarism or copied content", "Use of inappropriate language or offensive material", "Submission after the deadline", "Manipulation of judging results"]'
+                                            data-criteria='[{"criterion": "Customer Service Quality (Demonstrates how OXORD provided excellent service, solved customer concerns, and achieved customer satisfaction.)", "percentage": "35%"}, {"criterion": "Storytelling & Content (Clear, organized, and meaningful presentation of the customer&apos;s experience and service journey.)", "percentage": "25%"}, {"criterion": "Professionalism (Confidence, communication, proper appearance, and overall quality of the presentation.)", "percentage": "20%"}, {"criterion": "Creativity (Originality, presentation style, video editing, and effective use of visuals.)", "percentage": "10%"}, {"criterion": "Overall Impact (The presentation&apos;s ability to inspire confidence, showcase OXORD&apos;s service excellence, and leave a positive impression on the audience.)", "percentage": "10%"}]'>
+                                            <i class="bi bi-eye"></i> View Criteria
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>OGT-05</strong></td>
+                                    <td><span class="text-white fw-bold">Singing Competition (Hymnal / Christian Song – Solo and Quartet)</span></td>
+                                    <td>Vocal Arts & Harmony</td>
+                                    <td class="text-center">
+                                        <button class="btn-view-criteria" data-bs-toggle="modal" data-bs-target="#criteriaModal"
+                                            data-title="Singing Competition (Hymnal / Christian Song – Solo and Quartet)"
+                                            data-category="Vocal Arts & Harmony"
+                                            data-mechanics='["To showcase employees&apos; vocal ability, musicality, and heartfelt worship through the presentation of hymns and Christian songs that glorify God.", "Open to Solo and Quartet (4 members) categories.", "Participants may perform one (1) hymnal or Christian song.", "Songs may be performed a cappella or with instrumental accompaniment (live or minus-one).", "Basic video editing, captions, and transitions are allowed, provided they do not alter or enhance the vocal performance.", "Videos should have clear audio and video quality with a minimum resolution of 1080p (Full HD) in landscape orientation.", "Contemporary song is not allowed."]'
+                                            data-criteria='[{"criterion": "Vocal Quality (Pitch, Tone & Control)", "percentage": "35%"}, {"criterion": "Musicality & Interpretation", "percentage": "25%"}, {"criterion": "Expression & Stage Presence", "percentage": "20%"}, {"criterion": "Video Quality & Creativity", "percentage": "10%"}, {"criterion": "Overall Impact", "percentage": "10%"}]'>
+                                            <i class="bi bi-eye"></i> View Criteria
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>OGT-06</strong></td>
+                                    <td><span class="text-white fw-bold">Poster Making Contest</span></td>
+                                    <td>Visual Arts & Graphic Design</td>
+                                    <td class="text-center">
+                                        <button class="btn-view-criteria" data-bs-toggle="modal" data-bs-target="#criteriaModal"
+                                            data-title="Poster Making Contest"
+                                            data-category="Visual Arts & Graphic Design"
+                                            data-mechanics='["To encourage creativity, artistic expression, and effective visual communication by creating a poster that promotes the Sportsfest theme and the values of teamwork, sportsmanship, and excellence.", "Open to individual participants only.", "Participants shall create one (1) original poster based on the official Anniversary theme.", "Posters may be created using traditional (hand-drawn) or digital media, as announced by the committee.", "All artwork must be original and must not contain copyrighted or AI-generated artwork.", "The poster should clearly communicate the assigned theme through creative design, color, and visual elements.", "Entries containing offensive, inappropriate, or plagiarized content will be disqualified."]'
+                                            data-criteria='[{"criterion": "Creativity & Originality", "percentage": "30%"}, {"criterion": "Relevance to the Theme", "percentage": "30%"}, {"criterion": "Artistic Design & Visual Appeal", "percentage": "20%"}, {"criterion": "Message & Impact", "percentage": "10%"}, {"criterion": "Neatness & Overall Presentation", "percentage": "10%"}]'>
+                                            <i class="bi bi-eye"></i> View Criteria
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>OGT-07</strong></td>
+                                    <td><span class="text-white fw-bold">Spoken Poetry</span></td>
+                                    <td>Literary & Performance Arts</td>
+                                    <td class="text-center">
+                                        <button class="btn-view-criteria" data-bs-toggle="modal" data-bs-target="#criteriaModal"
+                                            data-title="Spoken Poetry"
+                                            data-category="Literary & Performance Arts"
+                                            data-mechanics='["To provide employees with an opportunity to express their thoughts, emotions, and creativity through spoken poetry while demonstrating confidence, effective communication, and meaningful storytelling.", "One participant per team", "Participants shall perform one (1) spoken poetry piece based on the assigned theme or a topic approved by the committee.", "Participants may perform from memory or use cue cards if necessary.", "Simple background music or sound effects are allowed but must not overpower the performance.", "Props and simple costumes may be used to enhance the presentation but are not required.", "The performance should demonstrate clear voice projection, proper pronunciation, emotion, and confidence.", "Offensive, inappropriate, or discriminatory language and gestures are strictly prohibited."]'
+                                            data-criteria='[{"criterion": "Content & Message", "percentage": "30%"}, {"criterion": "Delivery (Voice, Diction & Projection)", "percentage": "25%"}, {"criterion": "Expression & Interpretation", "percentage": "20%"}, {"criterion": "Stage Presence & Audience Engagement", "percentage": "15%"}, {"criterion": "Overall Impact", "percentage": "10%"}]'>
+                                            <i class="bi bi-eye"></i> View Criteria
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>OGT-08</strong></td>
+                                    <td><span class="text-white fw-bold">Instrumental Talent Showcase</span></td>
+                                    <td>Musical Instrumental Arts</td>
+                                    <td class="text-center">
+                                        <button class="btn-view-criteria" data-bs-toggle="modal" data-bs-target="#criteriaModal"
+                                            data-title="Instrumental Talent Showcase"
+                                            data-category="Musical Instrumental Arts"
+                                            data-mechanics='["To showcase the musical talent, creativity, and technical skills of employees through an instrumental performance while promoting excellence, confidence, and appreciation for music.", "Open to Solo or Group performances (maximum of 5 members per group).", "Any musical instrument may be used, subject to the approval of the Sportsfest Committee.", "Participants may perform one (1) instrumental piece of their choice.", "Performances may be accompanied by a minus-one backing track, provided the instrumental performance remains the main focus.", "Singing is allowed.", "Basic video editing, transitions, and captions are permitted, provided they do not alter or enhance the actual instrumental performance.", "Participants should wear neat and appropriate attire."]'
+                                            data-criteria='[{"criterion": "Technical Skill & Accuracy", "percentage": "35%"}, {"criterion": "Musical Expression & Interpretation", "percentage": "25%"}, {"criterion": "Rhythm, Timing & Coordination", "percentage": "20%"}, {"criterion": "Video Presentation & Creativity", "percentage": "10%"}, {"criterion": "Overall Performance", "percentage": "10%"}]'>
+                                            <i class="bi bi-eye"></i> View Criteria
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>OGT-09</strong></td>
+                                    <td><span class="text-white fw-bold">Digital Logo Design Contest</span></td>
+                                    <td>Digital Graphics & Branding</td>
+                                    <td class="text-center">
+                                        <button class="btn-view-criteria" data-bs-toggle="modal" data-bs-target="#criteriaModal"
+                                            data-title="Digital Logo Design"
+                                            data-category="OXORD Sportsfest 2026 – Season IV"
+                                            data-mechanics='["To encourage creativity and innovation by designing a unique logo that represents the spirit of OXORD Sportsfest 2026 – Season IV, highlighting teamwork, unity, excellence, and sportsmanship.", "Each team shall be represented by one (1) participant.", "Participants must create an original digital logo inspired by the theme \\\"Adapting Technology to AI.\\\"", "The logo may represent a company, product, service, organization, event, or AI-powered technology.", "The design must be created using any digital design software (e.g., Adobe Illustrator, Photoshop, CorelDRAW, Canva, Figma, or similar).", "The logo must be original, creative, and should not contain copyrighted or pre-made logo elements.", "Participants must submit: 1. High-resolution PNG (transparent background) 2. JPG or PNG preview 3. A brief 2–3 sentence concept description explaining the logo and its connection to the theme.", "The logo should be simple, memorable, scalable, and suitable for digital and print applications.", "All entries must be submitted on or before the deadline set by the organizers."]'
+                                            data-criteria='[{"criterion": "Creativity & Originality", "percentage": "30%"}, {"criterion": "Relevance to the Theme", "percentage": "30%"}, {"criterion": "Visual Appeal", "percentage": "20%"}, {"criterion": "Technical Execution", "percentage": "10%"}, {"criterion": "Logo Concept & Presentation", "percentage": "10%"}]'>
+                                            <i class="bi bi-eye"></i> View Criteria
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>OGT-10</strong></td>
+                                    <td><span class="text-white fw-bold">Voice of Oxord - Customer Service Edition</span></td>
+                                    <td>Vocal Communication & Voiceover</td>
+                                    <td class="text-center">
+                                        <button class="btn-view-criteria" data-bs-toggle="modal" data-bs-target="#criteriaModal"
+                                            data-title="Voice of Oxord – Customer Service Edition"
+                                            data-category="OXORD Sportsfest 2026 – Season IV"
+                                            data-mechanics='["To develop and showcase employees&#39; communication skills, professionalism, and confidence by delivering a clear, engaging, and customer-focused voice-over presentation.", "Each team shall be represented by one (1) participant.", "Participants must record a 30&ndash;60 second customer service voice-over that reflects OXORD&#39;s professionalism, warmth, and hospitality.", "The recording should include a welcome greeting, product or service assistance, and a professional closing.", "The script must be original, spoken in a clear and friendly tone, and suitable for use in OXORD&#39;s customer service.", "Participants may record in English, Filipino, or a combination of both.", "Background music and basic audio editing are allowed, but the participant&#39;s voice must remain clear and natural.", "The audio recording must be submitted on or before the deadline set by the organizers."]'
+                                            data-criteria='[{"criterion": "Voice Clarity &amp; Pronunciation", "percentage": "30%"}, {"criterion": "Customer Service Delivery", "percentage": "30%"}, {"criterion": "Confidence &amp; Professionalism", "percentage": "20%"}, {"criterion": "Creativity &amp; Engagement", "percentage": "20%"}]'>
+                                            <i class="bi bi-eye"></i> View Criteria
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="text-center mt-5">
+            <a href="activities.html" class="btn btn-cyber">
+                <i class="bi bi-arrow-left me-2"></i>Return to Activities Matrix
+            </a>
+        </div>
+    </section>
+
+    <!-- Criteria Modal -->
+    <div class="modal fade" id="criteriaModal" tabindex="-1" aria-labelledby="criteriaModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="criteriaModalLabel" style="color: var(--neon-teal); font-weight: 800;">Event Details & Guidelines</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-4">
+                        <span class="cyber-badge mb-2 d-inline-block" id="modalCategory">Category</span>
+                        <h4 id="modalTitle" class="text-white fw-bold mb-0">Event Title</h4>
+                    </div>
+
+                    <!-- Mechanics Section -->
+                    <div class="mb-4 p-3 rounded" style="background: rgba(0, 255, 255, 0.03); border: 1px solid rgba(0, 255, 255, 0.15);">
+                        <p class="text-white fw-semibold mb-2"><i class="bi bi-gear-wide-connected me-2" style="color: var(--neon-teal);"></i>Mechanics & Guidelines:</p>
+                        <ul id="modalMechanicsList"></ul>
+                    </div>
+
+                    <!-- Presentation Guidelines Section (Conditionally Displayed) -->
+                    <div class="mb-4 p-3 rounded" id="presentationSection" style="background: rgba(0, 255, 255, 0.03); border: 1px solid rgba(0, 255, 255, 0.15); display: none;">
+                        <p class="text-white fw-semibold mb-2"><i class="bi bi-camera-video me-2" style="color: var(--neon-teal);"></i>Presentation Guidelines:</p>
+                        <ul id="modalPresentationList"></ul>
+                    </div>
+
+                    <!-- Participants Guidelines Section (Conditionally Displayed) -->
+                    <div class="mb-4 p-3 rounded" id="participantsSection" style="background: rgba(0, 255, 255, 0.03); border: 1px solid rgba(0, 255, 255, 0.15); display: none;">
+                        <p class="text-white fw-semibold mb-2" id="participantsHeaderLabel"><i class="bi bi-people me-2" style="color: var(--neon-teal);"></i>The presentation should include:</p>
+                        <ul id="modalParticipantsList"></ul>
+                    </div>
+
+                    <!-- Speech Topics / Suggested Flow Section (Conditionally Displayed) -->
+                    <div class="mb-4 p-3 rounded" id="topicsSection" style="background: rgba(204, 255, 0, 0.03); border: 1px solid rgba(204, 255, 0, 0.2); display: none;">
+                        <p class="text-white fw-semibold mb-2" id="topicsHeaderLabel"><i class="bi bi-journal-text me-2" style="color: var(--neon-volt);"></i>Speech Topics:</p>
+                        <ul id="modalTopicsList" style="list-style-type: none; padding-left: 0;"></ul>
+                    </div>
+
+                    <!-- Grounds for Disqualification Section (Conditionally Displayed) -->
+                    <div class="mb-4 p-3 rounded" id="disqualificationSection" style="background: rgba(255, 75, 75, 0.03); border: 1px solid rgba(255, 75, 75, 0.25); display: none;">
+                        <p class="text-white fw-semibold mb-2" style="color: #ff6b6b;"><i class="bi bi-exclamation-octagon me-2" style="color: #ff4b4b;"></i>Grounds for Disqualification:</p>
+                        <ul id="modalDisqualificationList"></ul>
+                    </div>
+
+                    <!-- Judging Criteria Table Section -->
+                    <div class="p-3 rounded" style="background: rgba(204, 255, 0, 0.03); border: 1px solid rgba(204, 255, 0, 0.2);">
+                        <p class="text-white fw-semibold mb-2"><i class="bi bi-clipboard-check me-2" style="color: var(--neon-volt);"></i>Judging Criteria Breakdown:</p>
+                        <div class="table-responsive rounded">
+                            <table class="table criteria-table align-middle">
+                               <thead>
+                                    <tr>
+                                        <th>Criteria Description</th>
+                                        <th class="text-end" style="width: 120px;">Percentage</th>
+                                    </tr>
+                               </thead>
+                               <tbody id="modalCriteriaTableBody">
+                                    <!-- Dynamically Populated -->
+                               </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-cyber py-2 px-4" style="font-size: 0.8rem;" data-bs-dismiss="modal">Close Matrix</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-4 text-center">
+        <p class="mb-1 text-white fw-bold tracking-wide">SPORTSFEST 2026 - SEASON IV</p>
+        <p class="small mb-0" style="color: var(--text-muted);">Play with Passion • Innovate with Technology • Win with Integrity</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // JavaScript to dynamically update modal content with structured lists and tables
+        const criteriaModal = document.getElementById('criteriaModal');
+        criteriaModal.addEventListener('show.bs.modal', function (event) {
+            const button = event.relatedTarget;
+            
+            const title = button.getAttribute('data-title');
+            const category = button.getAttribute('data-category');
+            const mechanicsJson = JSON.parse(button.getAttribute('data-mechanics'));
+            const presentationAttr = button.getAttribute('data-presentation-guidelines');
+            const participantsAttr = button.getAttribute('data-participants-guidelines');
+            const topicsAttr = button.getAttribute('data-topics');
+            const disqualificationAttr = button.getAttribute('data-disqualification');
+            const criteriaJson = JSON.parse(button.getAttribute('data-criteria'));
+            
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalCategory').textContent = category;
+            
+            // Populate Mechanics List
+            const mechanicsList = document.getElementById('modalMechanicsList');
+            mechanicsList.innerHTML = '';
+            mechanicsJson.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                mechanicsList.appendChild(li);
+            });
+
+            // Populate Presentation Guidelines Section
+            const presentationSection = document.getElementById('presentationSection');
+            const presentationList = document.getElementById('modalPresentationList');
+            presentationList.innerHTML = '';
+
+            if (presentationAttr) {
+                const presentationJson = JSON.parse(presentationAttr);
+                presentationSection.style.display = 'block';
+                presentationJson.forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = item;
+                    presentationList.appendChild(li);
+                });
+            } else {
+                presentationSection.style.display = 'none';
+            }
+
+            // Populate Participants Guidelines Section Separately
+            const participantsSection = document.getElementById('participantsSection');
+            const participantsList = document.getElementById('modalParticipantsList');
+            const participantsHeaderLabel = document.getElementById('participantsHeaderLabel');
+            participantsList.innerHTML = '';
+
+            if (participantsAttr) {
+                const participantsJson = JSON.parse(participantsAttr);
+                participantsSection.style.display = 'block';
+                if (title.includes("Customer Satisfaction")) {
+                    participantsHeaderLabel.innerHTML = '<i class="bi bi-people me-2" style="color: var(--neon-teal);"></i>The presentation should include:';
+                } else {
+                    participantsHeaderLabel.innerHTML = '<i class="bi bi-people me-2" style="color: var(--neon-teal);"></i>Participants Should:';
+                }
+                participantsJson.forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = item;
+                    participantsList.appendChild(li);
+                });
+            } else {
+                participantsSection.style.display = 'none';
+            }
+
+            // Populate Secondary List Section (Speech Topics or Suggested Flow) Separately
+            const topicsSection = document.getElementById('topicsSection');
+            const topicsList = document.getElementById('modalTopicsList');
+            const topicsHeaderLabel = document.getElementById('topicsHeaderLabel');
+            topicsList.innerHTML = '';
+
+            if (topicsAttr) {
+                const topicsJson = JSON.parse(topicsAttr);
+                topicsSection.style.display = 'block';
+                
+                // Dynamically adjust header title depending on event type
+                if (title.includes("Live Selling") || title.includes("Unboxing") || title.includes("Customer Satisfaction")) {
+                    topicsHeaderLabel.innerHTML = '<i class="bi bi-list-stars me-2" style="color: var(--neon-volt);"></i>Suggested Flow:';
+                } else {
+                    topicsHeaderLabel.innerHTML = '<i class="bi bi-journal-text me-2" style="color: var(--neon-volt);"></i>Speech Topics:';
+                }
+                
+                // First item is typically the instruction intro / header
+                if(topicsJson.length > 0) {
+                    const introP = document.createElement('p');
+                    introP.className = 'text-muted small mb-2';
+                    introP.textContent = topicsJson[0];
+                    topicsList.appendChild(introP);
+
+                    // Rest are the items
+                    for(let i = 1; i < topicsJson.length; i++) {
+                        const li = document.createElement('li');
+                        li.className = 'mb-1 small';
+                        li.style.color = 'var(--text-muted)';
+                        li.innerHTML = `<span style="color: var(--neon-volt); font-weight: 600;">${topicsJson[i]}</span>`;
+                        topicsList.appendChild(li);
+                    }
+                }
+            } else {
+                topicsSection.style.display = 'none';
+            }
+
+            // Populate Grounds for Disqualification Section
+            const disqualificationSection = document.getElementById('disqualificationSection');
+            const disqualificationList = document.getElementById('modalDisqualificationList');
+            disqualificationList.innerHTML = '';
+
+            if (disqualificationAttr) {
+                const disqualificationJson = JSON.parse(disqualificationAttr);
+                disqualificationSection.style.display = 'block';
+                disqualificationJson.forEach(item => {
+                    const li = document.createElement('li');
+                    li.style.color = 'var(--text-muted)';
+                    li.textContent = item;
+                    disqualificationList.appendChild(li);
+                });
+            } else {
+                disqualificationSection.style.display = 'none';
+            }
+            
+            // Populate Criteria Table
+            const criteriaTableBody = document.getElementById('modalCriteriaTableBody');
+            criteriaTableBody.innerHTML = '';
+            criteriaJson.forEach(row => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td><strong>${row.criterion}</strong></td><td class="text-end"><span style="color: var(--neon-volt); font-weight: 700;">${row.percentage}</span></td>`;
+                criteriaTableBody.appendChild(tr);
+            });
+        });
+    </script>
+</body>
+</html>
+
+<script>
+  // 1. I-disable ang Right-Click Context Menu
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+  });
+
+  // 2. I-disable ang Inspect Element Shortcuts at View Source
+  document.addEventListener('keydown', function(e) {
+    // I-disable ang F12
+    if (e.key === "F12") {
+      e.preventDefault();
+    }
+    // I-disable ang Ctrl+Shift+I (Inspect)
+    if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+      e.preventDefault();
+    }
+    // I-disable ang Ctrl+Shift+J (Console)
+    if (e.ctrlKey && e.shiftKey && e.key === 'J') {
+      e.preventDefault();
+    }
+    // I-disable ang Ctrl+U (View Source)
+    if (e.ctrlKey && e.key === 'u') {
+      e.preventDefault();
+    }
+  });
+</script>

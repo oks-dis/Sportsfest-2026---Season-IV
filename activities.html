@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activities Matrix - SPORTSFEST 2026 - Season IV</title>
+    
+    <!-- External CSS Libraries -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- Custom Advanced Futuristic Stylesheet -->
+    <style>
+        :root {
+            --bg-deep: #01080a;
+            --bg-card: rgba(8, 34, 38, 0.85);
+            --border-glow: rgba(0, 255, 255, 0.4);
+            --neon-teal: #00ffff;
+            --neon-volt: #ccff00;
+            --text-main: #f0f4f5;
+            --text-muted: #b0c4de;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(0, 255, 255, 0.12), transparent 45%),
+                radial-gradient(circle at 85% 85%, rgba(204, 255, 0, 0.1), transparent 45%),
+                linear-gradient(135deg, #01080a, #031b20, #062e35);
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        /* Navbar Cyber Glass */
+        .navbar-cyber {
+            background: rgba(1, 8, 10, 0.9) !important;
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar-brand {
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: var(--neon-volt) !important;
+            text-shadow: 0 0 12px rgba(204, 255, 0, 0.5);
+        }
+
+        .navbar-nav .nav-link {
+            color: var(--text-main) !important;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active {
+            color: var(--neon-teal) !important;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+        }
+
+        /* Hero Header */
+        .cyber-header {
+            padding: 80px 0 30px 0;
+            position: relative;
+        }
+
+        .cyber-title {
+            font-weight: 900;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, #fff, var(--neon-teal), var(--neon-volt));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+        }
+
+        /* Holographic High-Visibility Cards */
+        .cyber-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glow);
+            border-radius: 24px;
+            padding: 30px;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .cyber-card:hover {
+            border-color: var(--neon-volt);
+            box-shadow: 0 0 30px rgba(204, 255, 0, 0.3), inset 0 0 20px rgba(0, 255, 255, 0.15);
+        }
+
+        .cyber-card h4, .cyber-card h3 {
+            color: var(--neon-teal);
+            font-weight: 800;
+            text-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
+        }
+
+        .cyber-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .cyber-badge {
+            background: rgba(0, 255, 255, 0.1);
+            color: var(--neon-teal);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Futuristic Table Styling */
+        .table-cyber {
+            color: var(--text-main);
+            background: transparent;
+            vertical-align: middle;
+        }
+
+        .table-cyber th {
+            background: rgba(0, 255, 255, 0.1);
+            color: var(--neon-volt);
+            border-color: var(--border-glow);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            padding: 15px;
+        }
+
+        .table-cyber td {
+            background: rgba(8, 34, 38, 0.4);
+            color: var(--text-muted);
+            border-color: rgba(0, 255, 255, 0.15);
+            padding: 15px;
+        }
+
+        .table-cyber tbody tr:hover td {
+            background: rgba(8, 34, 38, 0.8);
+            color: var(--text-main);
+            border-color: var(--border-glow);
+        }
+
+        /* Futuristic Button & Action Elements */
+        .btn-cyber {
+            background: transparent;
+            color: var(--neon-volt);
+            border: 2px solid var(--neon-volt);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 14px 35px;
+            border-radius: 50px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: color 0.4s ease;
+            box-shadow: 0 0 15px rgba(204, 255, 0, 0.2);
+        }
+
+        .btn-cyber::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--neon-volt);
+            z-index: -1;
+            transition: width 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .btn-cyber:hover {
+            color: #01080a;
+            box-shadow: 0 0 30px rgba(204, 255, 0, 0.7);
+        }
+
+        .btn-cyber:hover::before {
+            width: 100%;
+        }
+
+        .btn-view-criteria {
+            background: rgba(0, 255, 255, 0.1);
+            color: var(--neon-teal);
+            border: 1px solid rgba(0, 255, 255, 0.4);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-view-criteria:hover {
+            background: var(--neon-teal);
+            color: #01080a;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+        }
+
+        /* Modal Customization */
+        .modal-content {
+            background: var(--bg-deep);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            color: var(--text-main);
+            box-shadow: 0 0 40px rgba(0, 255, 255, 0.2);
+        }
+
+        .modal-header {
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+        }
+
+        .modal-footer {
+            border-top: 1px solid rgba(0, 255, 255, 0.2);
+        }
+
+        .btn-close {
+            filter: invert(1) grayscale(100%) brightness(200%);
+        }
+
+        /* Clean List Formatting Inside Modals */
+        .modal-body ul {
+            padding-left: 1.2rem;
+            margin-bottom: 0;
+        }
+
+        .modal-body li {
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+        }
+
+        /* Organized Table for Criteria Percentages */
+        .criteria-table {
+            color: var(--text-main);
+            background: rgba(8, 34, 38, 0.5);
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+
+        .criteria-table th {
+            background: rgba(204, 255, 0, 0.1);
+            color: var(--neon-volt);
+            border-color: rgba(204, 255, 0, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.75rem;
+            padding: 10px 12px;
+        }
+
+        .criteria-table td {
+            background: transparent;
+            color: var(--text-main);
+            border-color: rgba(0, 255, 255, 0.1);
+            padding: 10px 12px;
+            vertical-align: middle;
+        }
+
+        /* Footer */
+        footer {
+            background: #000405;
+            border-top: 1px solid rgba(0, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-cyber sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">SPORTSFEST 2026 - SEASON IV</a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto gap-2">
+                    <li class="nav-item"><a class="nav-link px-3" href="index.html">HOME</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="team.html">TEAMS</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="sports.html">SPORTS</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="schedule.html">SCHEDULE</a></li>
+                    <li class="nav-item"><a class="nav-link px-3 active" href="activities.html">ACTIVITIES</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="oxord-got-talent.html">OXORD GOT TALENT</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="cyber-header text-center">
+        <div class="container">
+            <span class="cyber-badge mb-3 d-inline-block">Event Schedule & Criteria Matrix</span>
+            <h1 class="cyber-title display-4">Activities Matrix</h1>
+            <p class="mt-2" style="color: var(--text-muted);">Official lineup of special events, competitions, and evaluation guidelines for Sportsfest 2026 - Season IV.</p>
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <section class="container py-4 mb-5">
+        <div class="row g-4">
+            
+            <!-- Activities Table Card -->
+            <div class="col-12">
+                <div class="cyber-card">
+                    <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-3">
+                        <div>
+                            <h3 class="mb-1" style="color: var(--neon-teal);">Master Activities List</h3>
+                            <p class="mb-0">Inspect mechanics and structured criteria tables or navigate directly to specific activity pages.</p>
+                        </div>
+                        <span class="cyber-badge">Status: Active Protocol</span>
+                    </div>
+                    
+                    <div class="table-responsive">
+                        <table class="table table-cyber align-middle mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Code / Ref</th>
+                                    <th>Activity Name</th>
+                                    <th>Category Type</th>
+                                    <th class="text-center">Action / Guidelines</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+<tr>
+                                    <td><strong>ACT-01</strong></td>
+                                    <td><span class="text-white fw-bold">OXORD Brand Creativity</span></td>
+                                    <td>Branding & Creative Design</td>
+                                    <td class="text-center">
+                                        <button class="btn-view-criteria" data-bs-toggle="modal" data-bs-target="#criteriaModal" 
+                                            data-title="OXORD Brand Creativity" 
+                                            data-category="Branding & Creative Design" 
+                                            data-mechanics='[
+                                                "Participants must create a physical, tangible prototype or model of an original OXORD-branded technology product, using a digital artwork, 3D render, AI-generated image, or photo illustration as their primary reference blueprint.",
+                                                "The design should represent a Future Manufactured Product by OXORD and showcase innovation, creativity, and functionality across both digital planning and physical execution.",
+                                                "Concept may feature IT/tech products including Laptops, Keyboards, Mice, Monitors, Desktop PCs, Servers, Networking Devices, Smart Devices, Accessories, or other innovative hardware.",
+                                                "Products may use futuristic or conventional materials (steel, aluminum, carbon fiber, wood, bamboo, recycled materials, glass, acrylic, titanium, 3D-printed parts, etc.).",
+                                                "The OXORD logo or branding must be clearly visible and integrated into both the digital reference design and the physical product.",
+                                                "Submissions must include both the digital reference design file/image and high-quality photographs or a live presentation of the completed physical build.",
+                                                "Participants must include a short product name and a brief description (2–3 sentences) explaining its purpose and why it represents OXORD&apos;s future as a technology manufacturer."
+                                            ]'
+                                            data-criteria='[
+                                                {"criterion": "Creativity & Originality", "percentage": "35%"},
+                                                {"criterion": "Innovation & Fabrication Concept", "percentage": "25%"},
+                                                {"criterion": "Digital-to-Physical Execution & Craftsmanship", "percentage": "20%"},
+                                                {"criterion": "Relevance to the OXORD Brand", "percentage": "15%"},
+                                                {"criterion": "Product Description & Concept Explanation", "percentage": "5%"}
+                                            ]'>
+                                            <i class="bi bi-eye"></i> View Criteria
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>ACT-02</strong></td>
+                                    <td><span class="text-white fw-bold">Typing Speed Competition</span></td>
+                                    <td>Skill & Agility</td>
+                                    <td class="text-center">
+<button class="btn-view-criteria" data-bs-toggle="modal" data-bs-target="#criteriaModal"
+                                            data-title="Typing Speed"
+                                            data-category="Skill & Agility"
+                                            data-mechanics='["3 Participants per team.", "Each participant will complete one (1) typing test using the designated computer and typing platform provided by the organizers.", "Participants must type the given passage exactly as displayed, including capitalization, punctuation, and spacing.", "Editing mistakes during the test is allowed, but only the final submitted result will be counted.", "The use of external keyboards, macros, autocorrect, AI tools, or any typing assistance software is strictly prohibited.", "Any participant caught cheating or receiving assistance will be automatically disqualified.", "The participant with the highest Words Per Minute (WPM) and highest accuracy will be declared the winner.", "Tie-Breaker: In the event of a tie, the participant with the higher typing accuracy will be declared the winner. If still tied, a 30-second sudden-death typing challenge will determine the champion."]'
+                                            data-criteria='["Highest Words Per Minute (WPM)", "Highest Typing Accuracy"]'>
+                                            <i class="bi bi-eye"></i> View Criteria
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>ACT-03</strong></td>
+                                    <td><span class="text-white fw-bold">AI and Technology Challenge</span></td>
+                                    <td>Programming & Automation Prototype</td>
+                                    <td class="text-center">
+                                        <button class="btn-view-criteria" data-bs-toggle="modal" data-bs-target="#criteriaModal" 
+                                            data-title="AI and Technology Challenge (Programming & Automation Prototype)" 
+                                            data-category="Innovation & Automation" 
+                                            data-mechanics='[
+                                                "Team Composition: Each team shall consist of up to three (3) participants.",
+                                                "Hardware & Setup: Teams must develop an automation prototype using a Desktop Computer integrated with Arduino or any compatible microcontroller.",
+                                                "Programming Environment: Prototypes may be programmed using Arduino IDE (C/C++), Python, C#, Java, or other compatible programming platforms.",
+                                                "Core Objective: The prototype must demonstrate automation, AI-assisted functionality, or smart technology that solves a real-world problem.",
+                                                "Components & Peripherals: Participants may use sensors, LEDs, motors, relays, LCDs, RFID, fingerprint modules, cameras, IoT devices, or other compatible electronic components.",
+                                                "Connectivity: Internet access is allowed only if required for the prototype&apos;s functionality.",
+                                                "Presentation Format: Teams will be given 10 minutes to demonstrate their project, followed by a 5-minute question-and-answer session with the judges.",
+                                                "Originality & Ethics: All source code, hardware, and project files must be the participants&apos; original work. Any form of plagiarism or unauthorized assistance will result in immediate disqualification.",
+                                                "Project Scope Examples: Smart Home Automation, Automated Voice Greetings with Face Recognition, Automatic Plant Watering System, Smart Door Lock, Motion-Activated Light, Automatic Trash Bin, Parking Sensor, Temperature Monitoring System, RFID Attendance System, Home Security Alarm, Smart Fan Controller, Traffic Light Simulator, or any innovative AI/automation solution."
+                                            ]'
+                                            data-criteria='[
+                                                {"criterion": "Innovation & Creativity", "percentage": "30%"},
+                                                {"criterion": "Programming & Automation Functionality", "percentage": "30%"},
+                                                {"criterion": "Technical Implementation", "percentage": "20%"},
+                                                {"criterion": "Presentation & Demonstration", "percentage": "10%"},
+                                                {"criterion": "Practicality & Real-World Application", "percentage": "10%"}
+                                            ]'>
+                                            <i class="bi bi-eye"></i> View Criteria
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>ACT-04</strong></td>
+                                    <td><span class="text-white fw-bold">OXORD Got Talent</span></td>
+                                    <td>Performing Arts & Entertainment</td>
+                                    <td class="text-center">
+                                        <a href="oxord-got-talent.html" class="btn-view-criteria" style="background: rgba(204, 255, 0, 0.1); color: var(--neon-volt); border-color: rgba(204, 255, 0, 0.4);">
+                                            <i class="bi bi-box-arrow-up-right"></i> Go to OXORD Got Talent
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>ACT-05</strong></td>
+                                    <td><span class="text-white fw-bold">Technical Skills Challenge</span></td>
+                                    <td>Technical Execution</td>
+                                    <td class="text-center">
+<button class="btn-view-criteria" data-bs-toggle="modal" data-bs-target="#criteriaModal" 
+    data-title="Desktop PC Assemble Contest" 
+    data-category="TECHNICAL SKILLS" 
+    data-mechanics='[
+        "Team Composition: 2 representatives per team / 1 per round / best of 3 rounds.",
+        "Standardized Kits: Each team gets identical parts (motherboard, CPU, RAM, PSU, case, etc.).",
+        "Workstation Setup: Tables with tools (screwdrivers, anti-static wrist straps).",
+        "Safety Briefing: Quick reminder about handling components carefully.",
+        "Start Signal: Referee announces “Go!” with timer.",
+        "Assembly Tasks: Teams must install CPU, RAM, PSU, storage, and connect cables.",
+        "Boot Test: The PC must power on and reach BIOS screen to count as complete.",
+        "Time Limit: 20–30 minutes max; fastest working build wins.",
+        "Roles - Builder(s): Main assembler(s).",
+        "Roles - Cable Manager: Handles PSU and cable routing.",
+        "Roles - Checker: Ensures screws and connections are secure (Leader of opposing team)."
+    ]' 
+    data-criteria='[
+        {"criterion": "Speed", "percentage": "First team to boot into BIOS gets max points."},
+        {"criterion": "Accuracy", "percentage": "Judges check cable management, correct installation, and safety."},
+        {"criterion": "Bonus Points", "percentage": "Awarded for neatness and teamwork."}
+    ]'>
+    <i class="bi bi-eye"></i> Desktop
+</button>
+<button class="btn-view-criteria" data-bs-toggle="modal" data-bs-target="#criteriaModal" 
+    data-title="CCTV Installation Contest" 
+    data-category="TECHNICAL SKILLS" 
+    data-mechanics='[
+        "Team Composition: Maximum of 3 members only.",
+        "Standardized Kits: Each team gets identical CCTV components (camera, NVR, cables, connectors, monitor).",
+        "Workstation Setup: Tables with tools (screwdrivers, crimping tool, drill if needed, cable ties).",
+        "Safety Briefing: Emphasize safe handling of power supplies and power tools.",
+        "Start Signal: Referee announces “Go!” with timer.",
+        "Installation Tasks: Teams must mount the camera, run cable, connect to NVR, and link to monitor.",
+        "Verification: The camera feed must display clearly on the monitor.",
+        "Time Limit: 20–45 minutes max; fastest working setup wins.",
+        "Roles - Installer: Mounts and positions the camera.",
+        "Roles - Cable Technician: Handles cable routing and crimping."
+    ]' 
+    data-criteria='[
+        {"criterion": "Speed", "percentage": "First team to show live feed gets max points."},
+        {"criterion": "Accuracy", "percentage": "Judges check cable terminations, proper mounting, and neatness."},
+        {"criterion": "Bonus Points", "percentage": "Awarded for clean cable management and teamwork."}
+    ]'>
+    <i class="bi bi-eye"></i> CCTV
+</button>
+<button class="btn-view-criteria" data-bs-toggle="modal" data-bs-target="#criteriaModal" 
+    data-title="Networking Contest" 
+    data-category="TECHNICAL SKILLS" 
+    data-mechanics='[
+        "Team Composition: Maximum of 3 members per team.",
+        "Standardized Kits: Each team gets identical sets — router/switch, cables, crimping tools, RJ45 connectors, and laptops and printer for testing.",
+        "Workstation Setup: Tables with clear zones for cable work, device setup, and testing.",
+        "Safety Briefing: Emphasize safe handling of electrical equipment and proper tool use.",
+        "Start Signal: Referee announces “Go!” with timer.",
+        "Tasks: Crimp and test Ethernet cables, connect devices to switch/router, and configure IP addresses and verify connectivity.",
+        "Verification: Teams must successfully ping between devices or show internet access and print using network printer.",
+        "Time Limit: 40 minutes to 1 hour max; fastest working network wins.",
+        "Roles - Cable Technician: Crimps and tests cables.",
+        "Roles - Configurator: Handles router/switch setup, printer drivers, and IP addressing.",
+        "Roles - Verifier: Runs connectivity tests and confirms success."
+    ]' 
+    data-criteria='[
+        {"criterion": "Speed", "percentage": "First team to establish working connectivity and print using the printer gets max points."},
+        {"criterion": "Accuracy", "percentage": "Judges check cable terminations, correct IP addressing, and proper configuration."},
+        {"criterion": "Bonus Points", "percentage": "Awarded for neat cable management and teamwork."}
+    ]'>
+    <i class="bi bi-eye"></i>NETWORKING
+</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>ACT-06</strong></td>
+                                    <td><span class="text-white fw-bold">OXORD Core Values and Company Knowledge - Quiz Bee</span></td>
+                                    <td>Knowledge & Intelligence</td>
+                                    <td class="text-center">
+                                        <span class="btn-criteria-disabled">
+                                            <i class="bi bi-slash-circle"></i> Criteria not uploaded Yet
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>ACT-07</strong></td>
+                                    <td><span class="text-white fw-bold">OXORD Success Story Video Contest</span></td>
+                                    <td>Multimedia Production</td>
+                                    <td class="text-center">
+                                        <span class="btn-criteria-disabled">
+                                            <i class="bi bi-slash-circle"></i> Criteria not uploaded Yet
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>ACT-08</strong></td>
+                                    <td><span class="text-white fw-bold">OXORD History Compilation Video Contest</span></td>
+                                    <td>Multimedia & Archive</td>
+                                    <td class="text-center">
+                                        <span class="btn-criteria-disabled">
+                                            <i class="bi bi-slash-circle"></i> Criteria not uploaded Yet
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="text-center mt-5">
+            <a href="index.html" class="btn btn-cyber">
+                <i class="bi bi-arrow-left me-2"></i>Return to Main Console
+            </a>
+        </div>
+    </section>
+
+    <!-- Criteria Modal -->
+    <div class="modal fade" id="criteriaModal" tabindex="-1" aria-labelledby="criteriaModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="criteriaModalLabel" style="color: var(--neon-teal); font-weight: 800;">Activity Details & Guidelines</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-4">
+                        <span class="cyber-badge mb-2 d-inline-block" id="modalCategory">Category</span>
+                        <h4 id="modalTitle" class="text-white fw-bold mb-0">Activity Name</h4>
+                    </div>
+
+                    <!-- Mechanics Section -->
+                    <div class="mb-4 p-3 rounded" style="background: rgba(0, 255, 255, 0.03); border: 1px solid rgba(0, 255, 255, 0.15);">
+                        <p class="text-white fw-semibold mb-2"><i class="bi bi-gear-wide-connected me-2" style="color: var(--neon-teal);"></i>Mechanics & Guidelines:</p>
+                        <ul id="modalMechanicsList"></ul>
+                    </div>
+
+                    <!-- Judging Criteria Table Section -->
+                    <div class="p-3 rounded" style="background: rgba(204, 255, 0, 0.03); border: 1px solid rgba(204, 255, 0, 0.2);">
+                        <p class="text-white fw-semibold mb-2"><i class="bi bi-clipboard-check me-2" style="color: var(--neon-volt);"></i>Judging Criteria Breakdown:</p>
+                        <div class="table-responsive rounded">
+                            <table class="table criteria-table align-middle">
+                               <thead>
+                                   <tr>
+                                       <th>Criteria Description</th>
+                                       <th class="text-end" style="width: 120px;">Percentage</th>
+                                   </tr>
+                               </thead>
+                               <tbody id="modalCriteriaTableBody">
+                                   <!-- Dynamically Populated -->
+                               </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-cyber py-2 px-4" style="font-size: 0.8rem;" data-bs-dismiss="modal">Close Matrix</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-4 text-center">
+        <p class="mb-1 text-white fw-bold tracking-wide">SPORTSFEST 2026 - SEASON IV</p>
+        <p class="small mb-0" style="color: var(--text-muted);">Play with Passion • Innovate with Technology • Win with Integrity</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // JavaScript to dynamically update modal content with structured lists and tables
+        const criteriaModal = document.getElementById('criteriaModal');
+        criteriaModal.addEventListener('show.bs.modal', function (event) {
+            const button = event.relatedTarget;
+            
+            const title = button.getAttribute('data-title');
+            const category = button.getAttribute('data-category');
+            const mechanicsJson = JSON.parse(button.getAttribute('data-mechanics'));
+            const criteriaJson = JSON.parse(button.getAttribute('data-criteria'));
+            
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalCategory').textContent = category;
+            
+            // Populate Mechanics List
+            const mechanicsList = document.getElementById('modalMechanicsList');
+            mechanicsList.innerHTML = '';
+            mechanicsJson.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                mechanicsList.appendChild(li);
+            });
+            
+            // Populate Criteria Table
+            const criteriaTableBody = document.getElementById('modalCriteriaTableBody');
+            criteriaTableBody.innerHTML = '';
+            criteriaJson.forEach(row => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td><strong>${row.criterion}</strong></td><td class="text-end"><span style="color: var(--neon-volt); font-weight: 700;">${row.percentage}</span></td>`;
+                criteriaTableBody.appendChild(tr);
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+<script>
+  // 1. I-disable ang Right-Click Context Menu
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+  });
+
+  // 2. I-disable ang Inspect Element Shortcuts at View Source
+  document.addEventListener('keydown', function(e) {
+    // I-disable ang F12
+    if (e.key === "F12") {
+      e.preventDefault();
+    }
+    // I-disable ang Ctrl+Shift+I (Inspect)
+    if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+      e.preventDefault();
+    }
+    // I-disable ang Ctrl+Shift+J (Console)
+    if (e.ctrlKey && e.shiftKey && e.key === 'J') {
+      e.preventDefault();
+    }
+    // I-disable ang Ctrl+U (View Source)
+    if (e.ctrlKey && e.key === 'u') {
+      e.preventDefault();
+    }
+  });
+</script>

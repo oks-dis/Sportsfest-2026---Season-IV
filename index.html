@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>SPORTSFEST 2026 - Season IV</title>
+    
+    <!-- External CSS Libraries -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    
+    <!-- Chart.js for Graphic Analytics -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Custom Advanced Futuristic Stylesheet -->
+    <style>
+        :root {
+            --bg-deep: #01080a;
+            --bg-card: rgba(8, 34, 38, 0.85);
+            --border-glow: rgba(0, 255, 255, 0.4);
+            --neon-teal: #00ffff;
+            --neon-volt: #ccff00;
+            --neon-magenta: #ff007f;
+            --text-main: #f0f4f5;
+            --text-muted: #b0c4de;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(0, 255, 255, 0.12), transparent 45%),
+                radial-gradient(circle at 85% 85%, rgba(204, 255, 0, 0.1), transparent 45%),
+                linear-gradient(135deg, #01080a, #031b20, #062e35);
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        /* Navbar Cyber Glass */
+        .navbar-cyber {
+            background: rgba(1, 8, 10, 0.9) !important;
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar-brand {
+            font-weight: 900;
+            letter-spacing: 1px;
+            color: var(--neon-volt) !important;
+            text-shadow: 0 0 12px rgba(204, 255, 0, 0.5);
+            font-size: clamp(0.95rem, 3.5vw, 1.25rem);
+            white-space: normal;
+        }
+
+        .navbar-nav .nav-link {
+            color: var(--text-main) !important;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+        }
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: var(--neon-teal) !important;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+        }
+
+        .hero {
+            min-height: 50vh;
+            background: transparent;
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+
+        .hero-title {
+            font-size: clamp(1.2rem, 4vw, 1.8rem);
+        }
+
+        /* Glass / Cyber Card Base Styles */
+        .glass, .cyber-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            padding: clamp(1rem, 3vw, 1.5rem);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .glass:hover, .cyber-card:hover {
+            border-color: var(--neon-volt);
+            box-shadow: 0 0 30px rgba(204, 255, 0, 0.3), inset 0 0 20px rgba(0, 255, 255, 0.15);
+        }
+
+        .btn-cyber-view {
+            background: transparent;
+            color: var(--neon-teal);
+            border: 1px solid var(--neon-teal);
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 10px 20px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.15);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+        }
+
+        .btn-cyber-view:hover {
+            background: var(--neon-teal);
+            color: #01080a;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+        }
+
+        .section-title {
+            color: var(--neon-volt);
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(204, 255, 0, 0.4);
+            font-size: clamp(1.4rem, 5vw, 2rem);
+        }
+
+        /* Team Highlight Graphic Cards */
+        .team-highlight-card {
+            position: relative;
+            background: linear-gradient(160deg, rgba(8, 34, 38, 0.9), rgba(1, 8, 10, 0.95));
+            border-radius: 20px;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            padding: 1.5rem;
+            overflow: hidden;
+        }
+
+        .team-highlight-card.legend-side {
+            border-left: 5px solid var(--neon-teal);
+        }
+
+        .team-highlight-card.hero-side {
+            border-right: 5px solid var(--neon-volt);
+        }
+
+        .team-stat-badge {
+            background: rgba(0, 255, 255, 0.08);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* Cyber Progress Bars */
+        .cyber-progress {
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.8);
+        }
+
+        .cyber-progress-bar-teal {
+            background: linear-gradient(90deg, #008080, var(--neon-teal));
+            box-shadow: 0 0 10px var(--neon-teal);
+        }
+
+        .cyber-progress-bar-volt {
+            background: linear-gradient(90deg, #808000, var(--neon-volt));
+            box-shadow: 0 0 10px var(--neon-volt);
+        }
+
+        .cardx {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            padding: clamp(1.2rem, 3vw, 1.8rem);
+            height: 100%;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        .cardx:hover {
+            transform: translateY(-4px);
+            border-color: var(--neon-volt);
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+        }
+
+        .cardx h5 {
+            color: var(--neon-teal);
+            font-weight: 800;
+            text-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
+        }
+
+        .cardx p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .cardx i {
+            color: var(--neon-volt);
+            filter: drop-shadow(0 0 12px rgba(204, 255, 0, 0.5));
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        footer {
+            background: #000405;
+            border-top: 1px solid rgba(0, 255, 255, 0.1);
+        }
+
+        /* Countdown Custom Responsive Layout */
+        .countdown-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 576px) {
+            .countdown-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+        }
+
+        .countdown-box {
+            padding: 12px 8px;
+            text-align: center;
+        }
+
+        .countdown-box h2 {
+            color: var(--neon-teal);
+            text-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+            font-weight: 900;
+            font-size: clamp(1.5rem, 6vw, 2.2rem);
+            margin-bottom: 0;
+        }
+
+        .countdown-box small {
+            color: var(--text-muted) !important;
+            font-weight: 700;
+            letter-spacing: 1px;
+            font-size: 0.75rem;
+        }
+
+        .score-text {
+            font-size: clamp(1.4rem, 5vw, 2.5rem);
+        }
+
+        @media (max-width: 767.98px) {
+            .navbar-collapse {
+                background: rgba(1, 8, 10, 0.95);
+                padding: 15px;
+                border-radius: 12px;
+                border: 1px solid rgba(0, 255, 255, 0.2);
+                margin-top: 10px;
+            }
+            
+            .hero img {
+                max-width: 80%;
+            }
+
+            .match-team-name {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-cyber sticky-top">
+        <div class="container">
+            <a class="navbar-brand py-1" href="#">SPORTSFEST 2026 - SEASON IV</a>
+            <button class="navbar-toggler border-0 p-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto gap-1">
+                    <li class="nav-item"><a class="nav-link px-3 active" href="index.html">HOME</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="team.html">TEAMS</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="sports.html">SPORTS</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="schedule.html">SCHEDULE</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="activities.html">ACTIVITIES</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="oxord-got-talent.html">OXORD GOT TALENT</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero d-flex align-items-center">
+        <div class="container text-center">
+            <img src="SPORTFEST-2026.jpg" class="img-fluid mb-4" style="filter: drop-shadow(0 0 25px rgba(0,255,255,0.3)); max-height: 250px;" alt="Sportsfest 2026 Logo">
+
+            <!-- Countdown Timer -->
+            <h2 class="mt-2 text-white fw-bold hero-title" style="letter-spacing: 1px; text-shadow: 0 0 10px rgba(255,255,255,0.3);">Countdown to OXORD Anniversary & Announcement of Winners</h2>
+            
+            <div id="countdown" class="countdown-container mt-4">
+                <div class="glass countdown-box"><h2 id="d">00</h2><small class="text-uppercase">Days</small></div>
+                <div class="glass countdown-box"><h2 id="h">00</h2><small class="text-uppercase">Hours</small></div>
+                <div class="glass countdown-box"><h2 id="m2">00</h2><small class="text-uppercase">Minutes</small></div>
+                <div class="glass countdown-box"><h2 id="s">00</h2><small class="text-uppercase">Seconds</small></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Highlights Infographic Section -->
+    <section id="team-highlights" class="container py-4">
+        <h2 class="section-title mb-2">Team Highlights</h2>
+        <p class="text-info mb-4 fw-semibold"><i class="bi bi-bar-chart-line me-1"></i> Head-to-Head Performance Breakdown</p>
+        
+        <div class="row g-4">
+            <!-- AI Legends Stat Card -->
+            <div class="col-12 col-md-6">
+                <div class="team-highlight-card legend-side h-100">
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                        <div>
+                            <span class="badge bg-info text-dark fw-bold mb-1">TEAM A</span>
+                            <h3 class="fw-bold mb-0" style="color: var(--neon-teal);">AI LEGENDS</h3>
+                        </div>
+                        <i class="bi bi-cpu fs-1" style="color: var(--neon-teal);"></i>
+                    </div>
+                    
+                    <div class="row g-2 mb-3">
+                        <div class="col-4">
+                            <div class="team-stat-badge">
+                                <span class="d-block small">WINS</span>
+                                <span class="fw-bold fs-4 text-white">4</span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="team-stat-badge">
+                                <span class="d-block small">LOSSES</span>
+                                <span class="fw-bold fs-4 text-white">1</span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="team-stat-badge">
+                                <span class="d-block small">DRAWS</span>
+                                <span class="fw-bold fs-4 text-white">1</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-2">
+                        <div class="d-flex justify-content-between text-white small fw-bold mb-1">
+                            <span>Overall Tournament Dominance</span>
+                            <span style="color: var(--neon-teal);">67% Win Rate</span>
+                        </div>
+                        <div class="progress cyber-progress">
+                            <div class="progress-bar cyber-progress-bar-teal" role="progressbar" style="width: 67%;" aria-valuenow="67" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NextGen Heroes Stat Card -->
+            <div class="col-12 col-md-6">
+                <div class="team-highlight-card hero-side h-100">
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                        <div>
+                            <span class="badge bg-warning text-dark fw-bold mb-1">TEAM B</span>
+                            <h3 class="fw-bold mb-0" style="color: var(--neon-volt);">NEXTGEN HEROES</h3>
+                        </div>
+                        <i class="bi bi-shield-shaded fs-1" style="color: var(--neon-volt);"></i>
+                    </div>
+
+                    <div class="row g-2 mb-3">
+                        <div class="col-4">
+                            <div class="team-stat-badge">
+                                <span class="d-block small">WINS</span>
+                                <span class="fw-bold fs-4 text-white">1</span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="team-stat-badge">
+                                <span class="d-block small">LOSSES</span>
+                                <span class="fw-bold fs-4 text-white">4</span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="team-stat-badge">
+                                <span class="d-block small">DRAWS</span>
+                                <span class="fw-bold fs-4 text-white">1</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-2">
+                        <div class="d-flex justify-content-between text-white small fw-bold mb-1">
+                            <span>Overall Tournament Dominance</span>
+                            <span style="color: var(--neon-volt);">17% Win Rate</span>
+                        </div>
+                        <div class="progress cyber-progress">
+                            <div class="progress-bar cyber-progress-bar-volt" role="progressbar" style="width: 17%;" aria-valuenow="17" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Line Graph Analytics Section -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="cyber-card p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap gap-2">
+                        <h4 class="mb-0 fw-bold" style="color: var(--neon-volt);"><i class="bi bi-graph-up-arrow me-2"></i>Sports Win Percentage Comparison</h4>
+                        <span class="badge bg-dark border border-info text-info">Live Analytics</span>
+                    </div>
+                    <div style="position: relative; height: 320px; width: 100%;">
+                        <canvas id="sportsWinRateChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Game Results Section -->
+    <section id="results" class="container py-4 py-md-5">
+        <h2 class="section-title mb-2">Live Tournament Results</h2>
+        <p class="text-info mb-4 fw-semibold"><i class="bi bi-clock-history me-1"></i> Recent Event Updates</p>
+        <div class="row g-3 g-md-4">
+            
+            <!-- Chess Results Card -->
+            <div class="col-12 col-lg-6">
+                <div class="cyber-card d-flex flex-column justify-content-between h-100">
+                    <div>
+                        <div class="match-score-board">
+                            <h4 class="text-uppercase tracking-wide mb-3 text-center" style="color: var(--neon-volt); font-size: clamp(1.1rem, 3vw, 1.4rem);">CHESS OVERALL RESULT</h4>
+                            <div class="row align-items-center justify-content-center my-3 g-2">
+                                <div class="col-5 text-center text-sm-end">
+                                    <span class="fw-bold text-white match-team-name d-block">AI LEGENDS</span>
+                                </div>
+                                <div class="col-2 text-center px-0">
+                                    <span class="fw-bold score-text d-block" style="color: var(--neon-teal);">6 - 0</span>
+                                </div>
+                                <div class="col-5 text-center text-sm-start">
+                                    <span class="fw-bold text-white match-team-name d-block">NEXTGEN HEROES</span>
+                                </div>
+                            </div>
+                            <!-- Visual Ratio Bar -->
+                            <div class="progress cyber-progress mb-2">
+                                <div class="progress-bar cyber-progress-bar-teal" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <div class="d-flex justify-content-between small">
+                                <span>100% Points Earned</span>
+                                <span>0% Points Earned</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-3">
+                        <a href="Chess.html" class="btn-cyber-view w-100 w-sm-auto">
+                            <i class="bi bi-eye me-2"></i>VIEW SPORT
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bowling Results Card -->
+            <div class="col-12 col-lg-6">
+                <div class="glass h-100 d-flex flex-column justify-content-between">
+                    <div>
+                        <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap gap-2">
+                            <h4 class="mb-0" style="color: var(--neon-volt); font-size: clamp(1.1rem, 3vw, 1.4rem);">BOWLING RESULTS</h4>
+                            <a href="Bowling.html" class="btn-cyber-view">View Bowling</a>
+                        </div>
+                        
+                        <!-- Men's Bowling -->
+                        <div class="mb-3 p-3 rounded-3 bg-dark bg-opacity-50 border border-secondary border-opacity-25">
+                            <div class="text-center fw-bold small mb-2" style="color: var(--neon-volt);">MEN'S DIVISION</div>
+                            <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1">
+                                <span class="fw-bold text-white small">AI LEGENDS: 473</span>
+                                <span class="fw-bold text-white small">NEXTGEN HEROES: 463</span>
+                            </div>
+                            <div class="progress cyber-progress" style="height: 6px;">
+                                <div class="progress-bar cyber-progress-bar-teal" role="progressbar" style="width: 50.5%" aria-valuenow="50.5" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="progress-bar cyber-progress-bar-volt" role="progressbar" style="width: 49.5%" aria-valuenow="49.5" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+
+                        <!-- Women's Bowling -->
+                        <div class="mb-2 p-3 rounded-3 bg-dark bg-opacity-50 border border-secondary border-opacity-25">
+                            <div class="text-center fw-bold small mb-2" style="color: var(--neon-volt);">WOMEN'S DIVISION</div>
+                            <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1">
+                                <span class="fw-bold text-white small">AI LEGENDS: 379</span>
+                                <span class="fw-bold text-white small">NEXTGEN HEROES: 337</span>
+                            </div>
+                            <div class="progress cyber-progress" style="height: 6px;">
+                                <div class="progress-bar cyber-progress-bar-teal" role="progressbar" style="width: 53%" aria-valuenow="53" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="progress-bar cyber-progress-bar-volt" role="progressbar" style="width: 47%" aria-valuenow="47" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other Sports Card -->
+            <div class="col-12">
+                <div class="glass h-100 d-flex flex-column justify-content-between">
+                    <div>
+                        <!-- Header -->
+                        <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-2">
+                            <div class="d-flex align-items-center gap-2 gap-sm-3">
+                                <i class="bi bi-trophy-fill fs-2" style="color: var(--neon-volt);"></i>
+                                <div>
+                                    <h4 class="mb-0" style="color: var(--neon-volt); font-size: clamp(1.1rem, 3vw, 1.4rem);">Other Sports</h4>
+                                    <span class="small" style="color: var(--text-muted);">Basketball & Volleyball Results</span>
+                                </div>
+                            </div>
+                            <a href="sports.html" class="btn-cyber-view">View All</a>
+                        </div>
+
+                        <div class="row g-3">
+                            <!-- Basketball Tournament -->
+                            <div class="col-12 col-md-4">
+                                <div class="p-3 rounded-3 bg-dark bg-opacity-50 border border-secondary border-opacity-25 h-100 position-relative">
+                                    <div class="d-flex align-items-center justify-content-center gap-2 mb-2">
+                                        <i class="bi bi-dribbble small" style="color: var(--neon-volt);"></i>
+                                        <span class="text-uppercase fw-bold small" style="color: var(--neon-volt); letter-spacing: 1px;">Basketball</span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between my-2 gap-2">
+                                        <span class="fw-bold text-white small text-start">AI LEGENDS</span>
+                                        <div class="px-3 py-1 rounded-3 bg-dark border border-warning shadow-sm text-center">
+                                            <span class="fw-bold fs-4 d-block" style="color: var(--neon-volt); text-shadow: 0 0 10px rgba(204, 255, 0, 0.7);">2 : 2</span>
+                                        </div>
+                                        <span class="fw-bold text-white small text-end">NEXTGEN HEROES</span>
+                                    </div>
+                                    <div class="text-center mt-2">
+                                        <span class="badge bg-warning text-dark fw-bold small"><i class="bi bi-hourglass-split me-1"></i>GAME 4 - Done</span>
+                                        <div class="small mt-1 " style="font-size: 0.75rem;">Score Partial / Unofficial</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Volleyball Tournament Men -->
+                            <div class="col-12 col-md-4">
+                                <div class="p-3 rounded-3 bg-dark bg-opacity-50 border border-secondary border-opacity-25 h-100 position-relative">
+                                    <div class="d-flex align-items-center justify-content-center gap-2 mb-2">
+                                        <i class="bi bi-activity small" style="color: var(--neon-volt);"></i>
+                                        <span class="text-uppercase fw-bold small" style="color: var(--neon-volt); letter-spacing: 1px;">Volleyball Men</span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between my-2 gap-2">
+                                        <span class="fw-bold text-white small text-start">AI LEGENDS</span>
+                                        <div class="px-3 py-1 rounded-3 bg-dark border border-warning shadow-sm text-center">
+                                            <span class="fw-bold fs-4 d-block" style="color: var(--neon-volt); text-shadow: 0 0 10px rgba(204, 255, 0, 0.7);">0 : 2</span>
+                                        </div>
+                                        <span class="fw-bold text-white small text-end">NEXTGEN HEROES</span>
+                                    </div>
+                                    <div class="text-center mt-2">
+                                        <span class="badge bg-warning text-dark fw-bold small"><i class="bi bi-hourglass-split me-1"></i>GAME 2 - IN PROGRESS</span>
+                                        <div class="small mt-1" style="font-size: 0.75rem;">Score Partial / Unofficial</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Volleyball Tournament Mixed -->
+                            <div class="col-12 col-md-4">
+                                <div class="p-3 rounded-3 bg-dark bg-opacity-50 border border-secondary border-opacity-25 h-100 position-relative">
+                                    <div class="d-flex align-items-center justify-content-center gap-2 mb-2">
+                                        <i class="bi bi-people-fill small" style="color: var(--neon-volt);"></i>
+                                        <span class="text-uppercase fw-bold small" style="color: var(--neon-volt); letter-spacing: 1px;">Volleyball Mixed</span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between my-2 gap-2">
+                                        <span class="fw-bold text-white small text-start">AI LEGENDS</span>
+                                        <div class="px-3 py-1 rounded-3 bg-dark border border-warning shadow-sm text-center">
+                                            <span class="fw-bold fs-4 d-block" style="color: var(--neon-volt); text-shadow: 0 0 10px rgba(204, 255, 0, 0.7);">3 : 1</span>
+                                        </div>
+                                        <span class="fw-bold text-white small text-end">NEXTGEN HEROES</span>
+                                    </div>
+                                    <div class="text-center mt-2">
+                                        <span class="badge bg-warning text-dark fw-bold small"><i class="bi bi-hourglass-split me-1"></i>GAME 4 - Done</span>
+                                        <div class="small mt-1" style="font-size: 0.75rem;">Score Partial / Unofficial</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <a href="sports.html" class="btn-cyber-view w-100 py-2"><i class="bi bi-arrow-right-circle me-2"></i> Go to Other Sports</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section id="news" class="container py-4 py-md-5">
+        <h2 class="section-title mb-4">Latest News</h2>
+        <div class="row g-3 g-md-4">
+            <div class="col-12 col-md-6">
+                <div class="cardx">
+                    <h5>Sportsfest Kickoff</h5>
+                    <p class="mt-2 mb-0">The games officially began on Monday, August 10, 2026. Get ready!</p>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="cardx">
+                    <h5>Contest Updates</h5>
+                    <p class="mt-2 mb-0">Watch for schedules of OXORD Got Talent and ongoing competitions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Navigation Section -->
+    <section id="quick" class="container py-4 py-md-5 mb-4">
+        <h2 class="section-title mb-4">Quick Links</h2>
+        <div class="row g-3 g-md-4">
+            <div class="col-6 col-md-3">
+                <a href="team.html" class="cardx text-center d-block">
+                    <i class="bi bi-people fs-1 mb-2 d-block"></i>
+                    <h5 class="mb-0">Teams</h5>
+                </a>
+            </div>
+            <div class="col-6 col-md-3">
+                <a href="sports.html" class="cardx text-center d-block">
+                    <i class="bi bi-trophy fs-1 mb-2 d-block"></i>
+                    <h5 class="mb-0">Sports</h5>
+                </a>
+            </div>
+            <div class="col-6 col-md-3">
+                <a href="schedule.html" class="cardx text-center d-block">
+                    <i class="bi bi-calendar-event fs-1 mb-2 d-block"></i>
+                    <h5 class="mb-0">Schedule</h5>
+                </a>
+            </div>
+            <div class="col-6 col-md-3">
+                <a href="oxord-got-talent.html" class="cardx text-center d-block">
+                    <i class="bi bi-star fs-1 mb-2 d-block"></i>
+                    <h5 class="mb-0">Talent Show</h5>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4 text-center">
+        <div class="container">
+            <p class="mb-0 small" style="color: var(--text-muted);">&copy; 2026 SPORTSFEST Season IV | OXORD Official Event Hub</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap & External Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+    <script>
+        // Initialize AOS
+        AOS.init({ duration: 800, once: true });
+
+        // Countdown Timer Logic
+        const eventDate = new Date('October 31, 2026 00:00:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const diff = eventDate - now;
+
+            if (diff <= 0) {
+                document.getElementById('d').innerText = "00";
+                document.getElementById('h').innerText = "00";
+                document.getElementById('m2').innerText = "00";
+                document.getElementById('s').innerText = "00";
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('d').innerText = days < 10 ? '0' + days : days;
+            document.getElementById('h').innerText = hours < 10 ? '0' + hours : hours;
+            document.getElementById('m2').innerText = minutes < 10 ? '0' + minutes : minutes;
+            document.getElementById('s').innerText = seconds < 10 ? '0' + seconds : seconds;
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Chart.js - Sports Win Percentage Chart (Fixed based on actual score data)
+        const ctx = document.getElementById('sportsWinRateChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Chess', 'Bowling (M)', 'Bowling (W)', 'Basketball', 'Volleyball (M)', 'Volleyball (Mix)'],
+                datasets: [
+                    {
+                        label: 'AI Legends Win %',
+                        data: [100, 51, 53, 50, 0, 75],
+                        backgroundColor: '#00ffff',
+                        borderColor: '#00ffff',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'NextGen Heroes Win %',
+                        data: [0, 49, 47, 50, 100, 25],
+                        backgroundColor: '#ccff00',
+                        borderColor: '#ccff00',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: { color: '#b0c4de' },
+                        grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                    },
+                    x: {
+                        ticks: { color: '#b0c4de' },
+                        grid: { color: 'rgba(255, 255, 255, 0.05)' }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: { color: '#f0f4f5' }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
